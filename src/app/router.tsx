@@ -6,6 +6,21 @@ import { NotFoundRoute } from '../routes/not-found/NotFoundRoute'
 import { ProjectDetailRoute } from '../routes/project-detail/ProjectDetailRoute'
 import { SiteLayout } from './layouts/SiteLayout'
 
+const devRoutes = import.meta.env.DEV
+  ? [
+      {
+        path: '/dev/ui-primitives',
+        lazy: async () => {
+          const { UiPrimitivesRoute } = await import(
+            '../routes/dev/UiPrimitivesRoute'
+          )
+
+          return { Component: UiPrimitivesRoute }
+        },
+      },
+    ]
+  : []
+
 export const router = createBrowserRouter([
   {
     element: <SiteLayout />,
@@ -14,6 +29,7 @@ export const router = createBrowserRouter([
       { path: '/projects/:slug', element: <ProjectDetailRoute /> },
       { path: '/about', element: <AboutRoute /> },
       { path: '/contact', element: <ContactRoute /> },
+      ...devRoutes,
       { path: '*', element: <NotFoundRoute /> },
     ],
   },

@@ -1,0 +1,71 @@
+.button {
+  display: inline-flex;
+  min-inline-size: 0;
+  align-items: center;
+  justify-content: center;
+  gap: var(--button-gap);
+  padding-block: 0;
+  padding-inline: var(--space-md);
+  border: 0;
+  border-radius: var(--button-radius);
+  font-family: var(--font-family-primary);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: normal;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: default;
+}
+
+.button--size-36 {
+  block-size: 36px;
+  padding-inline: var(--space-sm);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.button--size-46 {
+  block-size: 46px;
+}
+
+.button--size-56 {
+  block-size: 56px;
+}
+
+.button--primary {
+  background: var(--button-primary-bg);
+  color: var(--button-primary-text);
+}
+
+.button--outline {
+  border: 0.5px solid var(--button-outline-border);
+  background: var(--button-outline-bg);
+  color: var(--button-outline-text);
+}
+
+.button--ghost {
+  border-radius: var(--radius-md);
+  background: var(--button-ghost-bg);
+  color: var(--button-ghost-text);
+}
+
+.button__icon {
+  display: inline-flex;
+  inline-size: 18px;
+  block-size: 18px;
+  flex: 0 0 18px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__icon > svg {
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.button__content {
+  min-inline-size: 0;
+}

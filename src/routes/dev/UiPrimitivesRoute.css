@@ -1,0 +1,36 @@
+.ui-primitives {
+  min-block-size: 100vh;
+  padding: var(--space-xl);
+  background: var(--color-bg-screen);
+  color: var(--color-text-primary);
+  font-family: var(--font-family-body);
+}
+
+.ui-primitives h1,
+.ui-primitives h2 {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-weight: 400;
+}
+
+.ui-primitives h1 {
+  margin-block-end: var(--space-xl);
+}
+
+.ui-primitives__section {
+  display: grid;
+  gap: var(--space-md);
+  margin-block-end: var(--space-xl);
+}
+
+.ui-primitives__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+.ui-primitives__label {
+  inline-size: 48px;
+  font-size: var(--font-size-xs);
+}
