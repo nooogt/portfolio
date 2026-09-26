@@ -1,1 +1,40 @@
-/* Foundational values will be defined from the approved design system. */
+:root {
+  --color-neutral-0: #ffffff;
+  --color-neutral-100: #ebeae6;
+  --color-neutral-600: #686661;
+  --color-neutral-900: #2f4048;
+
+  --color-brand-terracotta-500: #c7674a;
+  --color-brand-brown-500: #ab554b;
+  --color-brand-yellow-500: #fae7c8;
+
+  --color-status-danger-500: #ef4444;
+  --color-status-danger-700: #8f2929;
+
+  --font-family-display: "VT323", monospace;
+  --font-family-body: "Source Sans 3", sans-serif;
+  --font-family-primary: "Source Sans 3", sans-serif;
+
+  --font-size-xs: 12px;
+  --font-size-xl: 20px;
+
+  --space-2xs: 2px;
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 999px;
+
+  --shadow-sm-color: #0000001a;
+  --shadow-sm-y: 2px;
+  --shadow-sm-blur: 8px;
+
+  --shadow-lg-color: #00000029;
+  --shadow-lg-y: 8px;
+  --shadow-lg-blur: 24px;
+}

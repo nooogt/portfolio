@@ -1,1 +1,5 @@
-/* Semantic roles will map foundation values to product meaning. */
+:root {
+  --elevation-high-color: var(--shadow-lg-color);
+  --elevation-high-y: var(--shadow-lg-y);
+  --elevation-high-blur: var(--shadow-lg-blur);
+}

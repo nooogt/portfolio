@@ -1,1 +1,33 @@
-/* Theme mappings will be defined when the theme system is implemented. */
+:root,
+[data-theme="light"] {
+  --color-brand-primary: var(--color-brand-terracotta-500);
+  --color-brand-primary-strong: var(--color-brand-brown-500);
+  --color-brand-primary-foreground: var(--color-brand-yellow-500);
+  --color-brand-secondary: var(--color-brand-yellow-500);
+  --color-brand-secondary-foreground: var(--color-brand-terracotta-500);
+
+  --color-accent-brown: var(--color-brand-brown-500);
+  --color-accent-yellow: var(--color-brand-yellow-500);
+
+  --color-bg-screen: #f9e6c8;
+  --color-bg-surface: var(--color-neutral-0);
+  --color-bg-inverse: var(--color-neutral-900);
+  --color-bg-transparent: #00000000;
+  --color-bg-brand-subtle: #c7674a26;
+  --color-bg-scrim: #21212199;
+
+  --color-text-primary: var(--color-neutral-900);
+  --color-text-secondary: #6b6862;
+  --color-text-inverse: var(--color-neutral-0);
+
+  --color-border-subtle: var(--color-neutral-100);
+  --color-icon-default: var(--color-neutral-600);
+
+  --color-feedback-danger-border: var(--color-status-danger-500);
+  --color-feedback-danger-text: var(--color-status-danger-700);
+  --color-feedback-danger-icon: var(--color-status-danger-500);
+
+  --color-border-danger: var(--color-feedback-danger-border);
+  --color-text-danger: var(--color-feedback-danger-text);
+  --color-icon-danger: var(--color-feedback-danger-icon);
+}

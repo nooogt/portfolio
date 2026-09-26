@@ -1,0 +1,60 @@
+:root {
+  --radius-button: var(--radius-pill);
+  --button-radius: var(--radius-button);
+  --button-gap: var(--space-sm);
+
+  --button-primary-bg: var(--color-bg-inverse);
+  --button-primary-text: var(--color-text-inverse);
+
+  --button-secondary-bg: var(--color-brand-secondary);
+  --button-secondary-text: var(--color-brand-secondary-foreground);
+
+  --button-outline-bg: var(--color-accent-brown);
+  --button-outline-border: var(--color-accent-yellow);
+  --button-outline-text: var(--color-accent-yellow);
+
+  --button-ghost-bg: var(--color-bg-transparent);
+  --button-ghost-text: var(--color-text-primary);
+
+  --card-bg-elevated: var(--color-brand-secondary);
+  --card-radius-default: var(--radius-lg);
+  --spacing-card-padding: var(--space-md);
+  --card-padding: var(--spacing-card-padding);
+
+  --input-bg-default: var(--color-bg-surface);
+  --input-border-default: var(--color-border-subtle);
+  --input-label-default: var(--color-text-secondary);
+  --input-text: var(--color-text-primary);
+  --input-icon-default: var(--color-icon-default);
+
+  --input-bg-danger: var(--color-bg-surface);
+  --input-border-danger: var(--color-border-danger);
+  --input-label-danger: var(--color-text-danger);
+  --input-helper-danger: var(--color-text-danger);
+  --input-icon-danger: var(--color-icon-danger);
+
+  --dialog-border: var(--color-border-subtle);
+  --dialog-radius: var(--radius-xl);
+  --dialog-shadow-color: var(--elevation-high-color);
+  --dialog-shadow-y: var(--elevation-high-y);
+  --dialog-shadow-blur: var(--elevation-high-blur);
+
+  --spacing-tab-bar-x: var(--space-sm);
+  --spacing-tab-bar-y: var(--space-sm);
+  --tab-bar-bg: var(--color-brand-secondary);
+  --tab-bar-border: var(--color-bg-transparent);
+  --tab-bar-radius: var(--radius-pill);
+  --tab-bar-padding-inline: var(--spacing-tab-bar-x);
+  --tab-bar-padding-block: var(--spacing-tab-bar-y);
+
+  --spacing-tab-item-gap: var(--space-xs);
+  --tab-item-active-bg: var(--color-brand-primary);
+  --tab-item-active-text: var(--color-brand-primary-foreground);
+  --tab-item-inactive-bg: var(--color-bg-transparent);
+  --tab-item-inactive-text: var(--color-brand-primary);
+  --tab-item-radius: var(--radius-pill);
+  --tab-item-gap: var(--spacing-tab-item-gap);
+
+  --header-gap: var(--space-sm);
+  --footer-gap: var(--space-sm);
+}
