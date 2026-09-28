@@ -1,1 +1,12 @@
-/* Shared motion rules will live here when motion is introduced. */
+:root {
+  --motion-duration-interaction: 150ms;
+  --motion-easing-interaction: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .circle-button,
+  .navigation-item {
+    transition: none;
+  }
+}

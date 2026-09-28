@@ -15,6 +15,16 @@
   --color-bg-transparent: #00000000;
   --color-bg-brand-subtle: #c7674a26;
   --color-bg-scrim: #21212199;
+  --color-border-focus: var(--color-brand-primary);
+
+  --color-interaction-inverse-hover: var(--color-neutral-700);
+  --color-interaction-inverse-pressed: var(--color-neutral-800);
+  --color-interaction-brown-hover: var(--color-brand-brown-600);
+  --color-interaction-brown-pressed: var(--color-brand-brown-700);
+  --color-interaction-yellow-hover: var(--color-brand-yellow-400);
+  --color-interaction-primary-hover: var(--color-brand-terracotta-600);
+  --color-interaction-primary-pressed: var(--color-brand-terracotta-700);
+  --color-interaction-subtle-pressed: var(--color-brand-terracotta-100);
 
   --color-text-primary: var(--color-neutral-900);
   --color-text-secondary: #6b6862;

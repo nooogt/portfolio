@@ -14,10 +14,22 @@
   line-height: normal;
   text-align: center;
   cursor: pointer;
+  transition:
+    background-color var(--motion-duration-interaction) var(--motion-easing-interaction),
+    border-color var(--motion-duration-interaction) var(--motion-easing-interaction),
+    color var(--motion-duration-interaction) var(--motion-easing-interaction);
 }
 
 .button:disabled {
   cursor: default;
+  border-color: var(--button-disabled-border);
+  background: var(--button-disabled-bg);
+  color: var(--button-disabled-text);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--button-focus-ring);
+  outline-offset: 2px;
 }
 
 .button--size-36 {
@@ -50,6 +62,32 @@
   border-radius: var(--radius-md);
   background: var(--button-ghost-bg);
   color: var(--button-ghost-text);
+}
+
+@media (hover: hover) {
+  .button--primary:not(:disabled):hover {
+    background: var(--button-primary-hover-bg);
+  }
+
+  .button--outline:not(:disabled):hover {
+    background: var(--button-outline-hover-bg);
+  }
+
+  .button--ghost:not(:disabled):hover {
+    background: var(--button-ghost-hover-bg);
+  }
+}
+
+.button--primary:not(:disabled):active {
+  background: var(--button-primary-pressed-bg);
+}
+
+.button--outline:not(:disabled):active {
+  background: var(--button-outline-pressed-bg);
+}
+
+.button--ghost:not(:disabled):active {
+  background: var(--button-ghost-pressed-bg);
 }
 
 .button__icon {

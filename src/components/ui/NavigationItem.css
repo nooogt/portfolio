@@ -12,10 +12,18 @@
   font-weight: 500;
   line-height: normal;
   text-decoration: none;
+  transition:
+    background-color var(--motion-duration-interaction) var(--motion-easing-interaction),
+    color var(--motion-duration-interaction) var(--motion-easing-interaction);
 }
 
 button.navigation-item {
-  cursor: default;
+  cursor: pointer;
+}
+
+.navigation-item:focus-visible {
+  outline: 2px solid var(--tab-item-focus-ring);
+  outline-offset: 2px;
 }
 
 .navigation-item--active {
@@ -29,6 +37,24 @@ button.navigation-item {
   padding: var(--space-sm);
   background: var(--tab-item-inactive-bg);
   color: var(--tab-item-inactive-text);
+}
+
+@media (hover: hover) {
+  .navigation-item--active:hover {
+    background: var(--tab-item-active-hover-bg);
+  }
+
+  .navigation-item--inactive:hover {
+    background: var(--tab-item-inactive-hover-bg);
+  }
+}
+
+.navigation-item--active:active {
+  background: var(--tab-item-active-pressed-bg);
+}
+
+.navigation-item--inactive:active {
+  background: var(--tab-item-inactive-pressed-bg);
 }
 
 .navigation-item__start {

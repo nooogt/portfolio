@@ -217,6 +217,10 @@ export function UiPrimitivesRoute() {
             </Button>
           </div>
         </div>
+        <p className="ui-primitives__technical-readout">
+          Probá hover, click/pressed y navegación por teclado. El foco visible
+          aparece con Tab.
+        </p>
       </section>
 
       <section className="ui-primitives__section">
@@ -266,7 +270,41 @@ export function UiPrimitivesRoute() {
               </div>
             </div>
           ))}
+          <div className="ui-primitives__circle-row">
+            <span className="ui-primitives__circle-size">disabled</span>
+            <div className="ui-primitives__circle-cell">
+              <CircleButton
+                aria-label="Secondary disabled"
+                disabled
+                variant="secondary"
+              >
+                ←
+              </CircleButton>
+            </div>
+            <div className="ui-primitives__circle-cell">
+              <CircleButton
+                aria-label="Outline disabled"
+                disabled
+                variant="outline"
+              >
+                ←
+              </CircleButton>
+            </div>
+            <div className="ui-primitives__circle-cell">
+              <CircleButton
+                aria-label="Ghost disabled"
+                disabled
+                variant="ghost"
+              >
+                ←
+              </CircleButton>
+            </div>
+          </div>
         </div>
+        <p className="ui-primitives__technical-readout">
+          Probá hover, click/pressed y navegación por teclado. Disabled usa el
+          atributo nativo.
+        </p>
       </section>
 
       <section className="ui-primitives__section">
@@ -582,7 +620,7 @@ export function UiPrimitivesRoute() {
         <p className="ui-primitives__technical-readout">
           El Lab usa buttons nativos para cambiar estado local. El consumer real
           usará links y aria-current=&quot;page&quot; sin acoplar el componente al
-          router.
+          router. Probá hover, click/pressed y navegación por teclado.
         </p>
       </section>
 

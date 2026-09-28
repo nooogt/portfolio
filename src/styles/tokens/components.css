@@ -5,16 +5,28 @@
 
   --button-primary-bg: var(--color-bg-inverse);
   --button-primary-text: var(--color-text-inverse);
+  --button-primary-hover-bg: var(--color-interaction-inverse-hover);
+  --button-primary-pressed-bg: var(--color-interaction-inverse-pressed);
 
   --button-secondary-bg: var(--color-brand-secondary);
   --button-secondary-text: var(--color-brand-secondary-foreground);
+  --button-secondary-hover-bg: var(--color-interaction-yellow-hover);
+  --button-secondary-pressed-bg: var(--color-brand-secondary);
 
   --button-outline-bg: var(--color-accent-brown);
   --button-outline-border: var(--color-accent-yellow);
   --button-outline-text: var(--color-accent-yellow);
+  --button-outline-hover-bg: var(--color-interaction-brown-hover);
+  --button-outline-pressed-bg: var(--color-interaction-brown-pressed);
 
   --button-ghost-bg: var(--color-bg-transparent);
   --button-ghost-text: var(--color-text-primary);
+  --button-ghost-hover-bg: var(--color-bg-brand-subtle);
+  --button-ghost-pressed-bg: var(--color-interaction-subtle-pressed);
+  --button-disabled-bg: var(--color-neutral-200);
+  --button-disabled-border: var(--color-neutral-200);
+  --button-disabled-text: var(--color-neutral-400);
+  --button-focus-ring: var(--color-border-focus);
 
   --card-bg-elevated: var(--color-brand-secondary);
   --card-radius-default: var(--radius-lg);
@@ -80,8 +92,13 @@
   --spacing-tab-item-gap: var(--space-xs);
   --tab-item-active-bg: var(--color-brand-primary);
   --tab-item-active-text: var(--color-brand-primary-foreground);
+  --tab-item-active-hover-bg: var(--color-interaction-primary-hover);
+  --tab-item-active-pressed-bg: var(--color-interaction-primary-pressed);
   --tab-item-inactive-bg: var(--color-bg-transparent);
   --tab-item-inactive-text: var(--color-brand-primary);
+  --tab-item-inactive-hover-bg: var(--color-bg-brand-subtle);
+  --tab-item-inactive-pressed-bg: var(--color-interaction-subtle-pressed);
+  --tab-item-focus-ring: var(--color-border-focus);
   --tab-item-radius: var(--radius-pill);
   --tab-item-gap: var(--spacing-tab-item-gap);
 

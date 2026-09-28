@@ -1,11 +1,21 @@
 :root {
   --color-neutral-0: #ffffff;
   --color-neutral-100: #ebeae6;
+  --color-neutral-200: #dddbd6;
+  --color-neutral-400: #a8a6a1;
   --color-neutral-600: #686661;
+  --color-neutral-700: #4f4e4a;
+  --color-neutral-800: #373735;
   --color-neutral-900: #2f4048;
 
   --color-brand-terracotta-500: #c7674a;
+  --color-brand-terracotta-100: #f4e1db;
+  --color-brand-terracotta-600: #9f523b;
+  --color-brand-terracotta-700: #773e2c;
   --color-brand-brown-500: #ab554b;
+  --color-brand-brown-600: #89443c;
+  --color-brand-brown-700: #67332d;
+  --color-brand-yellow-400: #fbecd3;
   --color-brand-yellow-500: #fae7c8;
 
   --color-status-danger-500: #ef4444;
