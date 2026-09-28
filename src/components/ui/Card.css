@@ -1,0 +1,23 @@
+.card {
+  display: flex;
+  inline-size: 100%;
+  flex-direction: column;
+  gap: var(--space-sm);
+  overflow: hidden;
+  padding: var(--card-padding);
+  border-radius: var(--card-radius-default);
+  background: var(--card-bg-elevated);
+}
+
+.card__header,
+.card__body,
+.card__footer {
+  display: flex;
+  min-inline-size: 0;
+  inline-size: 100%;
+  flex-direction: column;
+}
+
+.card__body {
+  gap: var(--space-sm);
+}

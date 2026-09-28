@@ -6,6 +6,7 @@ import {
   type CircleButtonSize,
 } from '../../components/ui/CircleButton'
 import { Input } from '../../components/ui/Input'
+import { Card, CardBody, CardFooter, CardHeader } from '../../components/ui/Card'
 import {
   Dialog,
   DialogBody,
@@ -89,7 +90,7 @@ export function UiPrimitivesRoute() {
         <h1>DESIGN SYSTEM LAB</h1>
         <p>Use Tab / Shift+Tab para probar navegación por teclado.</p>
         <p className="ui-primitives__planned">
-          Próximamente: 06 — CARD · 07 — NAVIGATION
+          Próximamente: 07 — NAVIGATION
         </p>
       </header>
 
@@ -381,6 +382,88 @@ export function UiPrimitivesRoute() {
             <Button onClick={() => setFormDialogOpen(false)}>CONTINUAR</Button>
           </DialogFooter>
         </Dialog>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>06 — CARD</h2>
+        <div className="ui-primitives__card-grid">
+          <div className="ui-primitives__card-example">
+            <h3>CARD — STRUCTURAL</h3>
+            <Card>
+              <CardHeader>
+                <span className="ui-primitives__card-slot">Header slot</span>
+              </CardHeader>
+              <CardBody>
+                <span className="ui-primitives__card-slot">Body slot</span>
+              </CardBody>
+              <CardFooter>
+                <span className="ui-primitives__card-slot">Footer slot</span>
+              </CardFooter>
+            </Card>
+          </div>
+
+          <div className="ui-primitives__card-example">
+            <h3>CARD — CONTENT COMPOSITION</h3>
+            <Card>
+              <CardHeader className="ui-primitives__card-header-content">
+                <span className="ui-primitives__card-eyebrow">CASE STUDY</span>
+                <strong className="ui-primitives__card-title">
+                  Prototype Factory
+                </strong>
+              </CardHeader>
+              <CardBody>
+                <p className="ui-primitives__card-copy">
+                  Un sistema reusable para diseñar y validar flujos de producto.
+                </p>
+              </CardBody>
+              <CardFooter>
+                <Button size={46}>VER DETALLE</Button>
+              </CardFooter>
+            </Card>
+          </div>
+
+          <div className="ui-primitives__card-example">
+            <h3>CARD — MEDIA COMPOSITION</h3>
+            <Card>
+              <CardHeader className="ui-primitives__card-header-content">
+                <strong className="ui-primitives__card-title">
+                  Media inside Body
+                </strong>
+                <span className="ui-primitives__card-caption">
+                  Responsive · Local radius · Local shadow
+                </span>
+              </CardHeader>
+              <CardBody>
+                <div
+                  className="ui-primitives__card-media ui-primitives__card-media--composition"
+                  aria-hidden="true"
+                >
+                  MEDIA PLACEHOLDER
+                </div>
+              </CardBody>
+            </Card>
+          </div>
+
+          <div className="ui-primitives__card-example">
+            <h3>CARD — CLIPPING STRESS TEST</h3>
+            <Card>
+              <CardBody>
+                <div
+                  className="ui-primitives__card-media ui-primitives__card-media--stress"
+                  aria-hidden="true"
+                >
+                  OVERSIZED CONTENT
+                </div>
+              </CardBody>
+              <CardFooter>
+                <span className="ui-primitives__card-caption">
+                  Stress test: este contenido excede deliberadamente el área
+                  normal para validar clipping.
+                </span>
+              </CardFooter>
+            </Card>
+          </div>
+        </div>
       </section>
     </div>
   )
