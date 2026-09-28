@@ -33,6 +33,7 @@
   --input-helper-danger: var(--color-text-danger);
   --input-icon-danger: var(--color-icon-danger);
 
+  --dialog-bg: var(--color-brand-secondary);
   --dialog-border: var(--color-border-subtle);
   --dialog-radius: var(--radius-xl);
   --dialog-shadow-color: var(--elevation-high-color);

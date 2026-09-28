@@ -175,6 +175,12 @@
   margin-block-start: var(--space-sm);
 }
 
+.ui-primitives__dialog-copy {
+  color: var(--color-text-primary);
+  font-size: 14px;
+  line-height: 1.429;
+}
+
 @media (max-width: 520px) {
   .ui-primitives__row {
     gap: var(--space-sm);

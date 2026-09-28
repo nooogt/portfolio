@@ -6,6 +6,15 @@ import {
   type CircleButtonSize,
 } from '../../components/ui/CircleButton'
 import { Input } from '../../components/ui/Input'
+import {
+  Dialog,
+  DialogBody,
+  DialogClose,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from '../../components/ui/Dialog'
 import './UiPrimitivesRoute.css'
 
 const buttonSizes: ButtonSize[] = [36, 46, 56]
@@ -70,6 +79,8 @@ export function UiPrimitivesRoute() {
   const [lastCircleAction, setLastCircleAction] = useState('None')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
+  const [baseDialogOpen, setBaseDialogOpen] = useState(false)
+  const [formDialogOpen, setFormDialogOpen] = useState(false)
 
   return (
     <div className="ui-primitives">
@@ -78,7 +89,7 @@ export function UiPrimitivesRoute() {
         <h1>DESIGN SYSTEM LAB</h1>
         <p>Use Tab / Shift+Tab para probar navegación por teclado.</p>
         <p className="ui-primitives__planned">
-          Próximamente: 05 — DIALOG · 06 — CARD · 07 — NAVIGATION
+          Próximamente: 06 — CARD · 07 — NAVIGATION
         </p>
       </header>
 
@@ -303,6 +314,73 @@ export function UiPrimitivesRoute() {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>05 — DIALOG</h2>
+        <p>
+          Probá cierre, Escape, click en el scrim, Tab / Shift+Tab, restauración
+          de foco y bloqueo de scroll.
+        </p>
+        <div className="ui-primitives__row">
+          <Button onClick={() => setBaseDialogOpen(true)}>
+            OPEN BASE DIALOG
+          </Button>
+          <Button onClick={() => setFormDialogOpen(true)} variant="outline">
+            OPEN DIALOG WITH FORM
+          </Button>
+        </div>
+
+        <Dialog open={baseDialogOpen} onOpenChange={setBaseDialogOpen}>
+          <DialogHeader>
+            <DialogTitle>DIALOG BASE</DialogTitle>
+            <DialogClose>
+              <CircleButton aria-label="Cerrar" size={40} variant="ghost">
+                ×
+              </CircleButton>
+            </DialogClose>
+          </DialogHeader>
+          <DialogBody>
+            <DialogDescription>
+              Este caso usa el background base del master canónico.
+            </DialogDescription>
+            <p className="ui-primitives__dialog-copy">
+              El contenido se compone dentro del slot Body.
+            </p>
+          </DialogBody>
+          <DialogFooter>
+            <Button onClick={() => setBaseDialogOpen(false)}>ENTENDIDO</Button>
+          </DialogFooter>
+        </Dialog>
+
+        <Dialog
+          open={formDialogOpen}
+          onOpenChange={setFormDialogOpen}
+        >
+          <DialogHeader>
+            <DialogTitle>DIALOG WITH FORM</DialogTitle>
+            <DialogClose>
+              <CircleButton aria-label="Cerrar" size={40} variant="ghost">
+                ×
+              </CircleButton>
+            </DialogClose>
+          </DialogHeader>
+          <DialogBody>
+            <DialogDescription>
+              Este caso usa la superficie canónica con contenido de formulario.
+            </DialogDescription>
+            <Input label="Ejemplo de control" placeholder="Contenido compuesto" />
+          </DialogBody>
+          <DialogFooter>
+            <Button
+              onClick={() => setFormDialogOpen(false)}
+              variant="ghost"
+            >
+              CANCELAR
+            </Button>
+            <Button onClick={() => setFormDialogOpen(false)}>CONTINUAR</Button>
+          </DialogFooter>
+        </Dialog>
       </section>
     </div>
   )
