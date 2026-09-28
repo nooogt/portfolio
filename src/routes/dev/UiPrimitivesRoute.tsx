@@ -16,6 +16,7 @@ import {
   HeaderStart,
 } from '../../components/ui/Header'
 import { Footer, FooterContent } from '../../components/ui/Footer'
+import { Toast } from '../../components/ui/Toast'
 import {
   Dialog,
   DialogBody,
@@ -93,6 +94,7 @@ export function UiPrimitivesRoute() {
   const [baseDialogOpen, setBaseDialogOpen] = useState(false)
   const [formDialogOpen, setFormDialogOpen] = useState(false)
   const [activeNavigation, setActiveNavigation] = useState('Home')
+  const [copyToastVisible, setCopyToastVisible] = useState(false)
 
   return (
     <div className="ui-primitives">
@@ -100,7 +102,7 @@ export function UiPrimitivesRoute() {
         <p className="ui-primitives__eyebrow">INTERNAL / DEV ONLY</p>
         <h1>DESIGN SYSTEM LAB</h1>
         <p>Use Tab / Shift+Tab para probar navegación por teclado.</p>
-        <p className="ui-primitives__planned">Próximamente: 10 — FEEDBACK</p>
+        <p className="ui-primitives__planned">Primera tanda completa</p>
       </header>
 
       <section className="ui-primitives__section">
@@ -679,6 +681,54 @@ export function UiPrimitivesRoute() {
             </Footer>
           </div>
         </div>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>10 — FEEDBACK</h2>
+        <h3>TOAST</h3>
+
+        <div className="ui-primitives__toast-grid">
+          <div className="ui-primitives__toast-example">
+            <h3>CANONICAL</h3>
+            <Toast start={<span aria-hidden="true">●</span>}>
+              Notificación del sistema
+            </Toast>
+          </div>
+
+          <div className="ui-primitives__toast-example">
+            <h3>LONG MESSAGE QA</h3>
+            <Toast>
+              Este mensaje moderadamente largo comprueba el ajuste responsive
+              sin agregar truncation al primitive.
+            </Toast>
+          </div>
+
+          <div className="ui-primitives__toast-example">
+            <h3>COPY SUCCESS USE CASE</h3>
+            <Button onClick={() => setCopyToastVisible(true)} size={36}>
+              TRIGGER COPY SUCCESS
+            </Button>
+            {copyToastVisible ? (
+              <div className="ui-primitives__toast-demo">
+                <Toast start={<span aria-hidden="true">✓</span>}>
+                  Email copiado
+                </Toast>
+                <Button
+                  onClick={() => setCopyToastVisible(false)}
+                  size={36}
+                  variant="ghost"
+                >
+                  HIDE DEMO
+                </Button>
+              </div>
+            ) : null}
+          </div>
+        </div>
+
+        <p className="ui-primitives__technical-readout">
+          El trigger y la visibilidad pertenecen al Lab. El Toast no incluye
+          timer, queue, viewport ni estado interno.
+        </p>
       </section>
     </div>
   )

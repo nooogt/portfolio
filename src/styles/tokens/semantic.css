@@ -1,4 +1,8 @@
 :root {
+  --elevation-low-color: var(--shadow-sm-color);
+  --elevation-low-y: var(--shadow-sm-y);
+  --elevation-low-blur: var(--shadow-sm-blur);
+
   --elevation-high-color: var(--shadow-lg-color);
   --elevation-high-y: var(--shadow-lg-y);
   --elevation-high-blur: var(--shadow-lg-blur);

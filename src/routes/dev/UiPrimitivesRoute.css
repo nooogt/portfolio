@@ -360,6 +360,26 @@
   background: var(--color-bg-transparent);
 }
 
+.ui-primitives__toast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: var(--space-lg);
+}
+
+.ui-primitives__toast-example,
+.ui-primitives__toast-demo {
+  display: grid;
+  min-inline-size: 0;
+  align-content: start;
+  justify-items: start;
+  gap: var(--space-sm);
+}
+
+.ui-primitives__toast-example {
+  padding: var(--space-md);
+  background: var(--color-neutral-100);
+}
+
 @media (max-width: 520px) {
   .ui-primitives__row {
     gap: var(--space-sm);

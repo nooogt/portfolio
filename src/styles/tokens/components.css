@@ -58,4 +58,11 @@
 
   --header-gap: var(--space-sm);
   --footer-gap: var(--space-sm);
+
+  --toast-bg: var(--color-bg-inverse);
+  --toast-text: var(--color-text-inverse);
+  --toast-radius: var(--radius-md);
+  --toast-shadow-color: var(--elevation-low-color);
+  --toast-shadow-y: var(--elevation-low-y);
+  --toast-shadow-blur: var(--elevation-low-blur);
 }
