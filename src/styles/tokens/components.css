@@ -33,6 +33,35 @@
   --input-helper-danger: var(--color-text-danger);
   --input-icon-danger: var(--color-icon-danger);
 
+  --input-bg-focus: var(--color-bg-surface);
+  --input-border-focus: var(--color-brand-primary);
+  --input-label-focus: var(--color-brand-primary);
+  --input-icon-focus: var(--color-brand-primary);
+
+  --input-bg-success: var(--color-bg-surface);
+  --input-border-success: #10b981;
+  --input-label-success: #0a6f4d;
+  --input-helper-success: #0a6f4d;
+  --input-icon-success: #10b981;
+
+  --input-bg-warning: var(--color-bg-surface);
+  --input-border-warning: #f59e0b;
+  --input-label-warning: #935f07;
+  --input-helper-warning: #935f07;
+  --input-icon-warning: #f59e0b;
+
+  --input-bg-disabled: var(--color-neutral-100);
+  --input-border-disabled: var(--color-neutral-100);
+  --input-label-disabled: #a8a6a1;
+  --input-icon-disabled: #a8a6a1;
+  --input-text-disabled: #a8a6a1;
+  --input-border-width-disabled: 1.5px;
+
+  --input-helper-default: #a8a6a1;
+  --input-placeholder-default: #85837e;
+  --input-placeholder: #a8a6a1;
+  --input-placeholder-disabled: #a8a6a1;
+
   --dialog-bg: var(--color-brand-secondary);
   --dialog-border: var(--color-border-subtle);
   --dialog-radius: var(--radius-xl);

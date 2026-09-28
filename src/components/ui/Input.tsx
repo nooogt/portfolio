@@ -2,7 +2,7 @@ import { useId } from 'react'
 import type { InputHTMLAttributes, ReactNode } from 'react'
 import './Input.css'
 
-export type InputStatus = 'default' | 'danger'
+export type InputStatus = 'default' | 'success' | 'danger' | 'warning'
 
 export interface InputProps
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'size'> {
@@ -23,6 +23,7 @@ export function Input({
   endAdornment,
   className,
   id,
+  disabled,
   required,
   'aria-describedby': ariaDescribedBy,
   'aria-invalid': ariaInvalid,
@@ -35,7 +36,9 @@ export function Input({
     ? [ariaDescribedBy, helperId].filter(Boolean).join(' ')
     : ariaDescribedBy
   const invalid = status === 'danger' ? (ariaInvalid ?? true) : ariaInvalid
-  const classes = ['input', `input--${status}`].join(' ')
+  const classes = ['input', `input--${status}`, disabled && 'input--disabled']
+    .filter(Boolean)
+    .join(' ')
   const nativeClasses = ['input__native', className].filter(Boolean).join(' ')
 
   return (
@@ -63,6 +66,7 @@ export function Input({
           aria-describedby={describedBy}
           aria-invalid={invalid}
           className={nativeClasses}
+          disabled={disabled}
           id={inputId}
           required={required}
         />

@@ -267,6 +267,58 @@ export function UiPrimitivesRoute() {
         <h2>04 — INPUT</h2>
         <div className="ui-primitives__input-grid">
           <div className="ui-primitives__inputs">
+            <h3>State anatomy — enfocá cada campo</h3>
+            <Input
+              label="Default → Focus"
+              placeholder="Hacé foco para ver primary"
+              helperIcon="i"
+              helperText="El foco se activa automáticamente"
+              startAdornment="@"
+              endAdornment="⌕"
+              required
+            />
+            <Input
+              label="Success"
+              placeholder="Borde success"
+              helperIcon="✓"
+              helperText="Valor correcto"
+              status="success"
+              startAdornment="@"
+              endAdornment="⌕"
+              required
+            />
+            <Input
+              label="Danger"
+              placeholder="Borde danger"
+              helperIcon="!"
+              helperText="Revisá este valor"
+              status="danger"
+              startAdornment="@"
+              endAdornment="⌕"
+              required
+            />
+            <Input
+              label="Warning"
+              placeholder="Borde warning"
+              helperIcon="!"
+              helperText="Comprobá este valor"
+              status="warning"
+              startAdornment="@"
+              endAdornment="⌕"
+              required
+            />
+            <Input
+              label="Disabled"
+              placeholder="Campo no disponible"
+              helperIcon="i"
+              helperText="Ayuda del campo"
+              disabled
+              startAdornment="@"
+              endAdornment="⌕"
+              required
+            />
+          </div>
+          <div className="ui-primitives__inputs">
             <h3>Static cases</h3>
             <Input label="Nombre" placeholder="Tu nombre" />
             <Input
