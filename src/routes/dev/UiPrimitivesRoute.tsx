@@ -300,6 +300,19 @@ export function UiPrimitivesRoute() {
               </CircleButton>
             </div>
           </div>
+          <div className="ui-primitives__circle-row" id="circle-anchor-check">
+            <span className="ui-primitives__circle-size">anchor</span>
+            <div className="ui-primitives__circle-cell">
+              <CircleButton
+                as="a"
+                href="#circle-anchor-check"
+                aria-label="CircleButton como enlace"
+                variant="secondary"
+              >
+                ↗
+              </CircleButton>
+            </div>
+          </div>
         </div>
         <p className="ui-primitives__technical-readout">
           Probá hover, click/pressed y navegación por teclado. Disabled usa el
