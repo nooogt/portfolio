@@ -1,0 +1,18 @@
+.navigation-bar {
+  display: inline-flex;
+  max-inline-size: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: var(--tab-bar-padding-block);
+  padding-inline: var(--tab-bar-padding-inline);
+  border: 0.5px solid var(--tab-bar-border);
+  border-radius: var(--tab-bar-radius);
+  background: var(--tab-bar-bg);
+}
+
+.navigation-bar__list {
+  display: flex;
+  max-inline-size: 100%;
+  align-items: center;
+  gap: var(--space-md);
+}

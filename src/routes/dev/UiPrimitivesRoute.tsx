@@ -7,6 +7,8 @@ import {
 } from '../../components/ui/CircleButton'
 import { Input } from '../../components/ui/Input'
 import { Card, CardBody, CardFooter, CardHeader } from '../../components/ui/Card'
+import { NavigationBar } from '../../components/ui/NavigationBar'
+import { NavigationItem } from '../../components/ui/NavigationItem'
 import {
   Dialog,
   DialogBody,
@@ -20,6 +22,7 @@ import './UiPrimitivesRoute.css'
 
 const buttonSizes: ButtonSize[] = [36, 46, 56]
 const circleButtonSizes: CircleButtonSize[] = [36, 40, 46, 48, 56]
+const navigationItems = ['Home', 'Work', 'About'] as const
 
 const colorTokenGroups = [
   {
@@ -82,6 +85,7 @@ export function UiPrimitivesRoute() {
   const [password, setPassword] = useState('')
   const [baseDialogOpen, setBaseDialogOpen] = useState(false)
   const [formDialogOpen, setFormDialogOpen] = useState(false)
+  const [activeNavigation, setActiveNavigation] = useState('Home')
 
   return (
     <div className="ui-primitives">
@@ -89,9 +93,7 @@ export function UiPrimitivesRoute() {
         <p className="ui-primitives__eyebrow">INTERNAL / DEV ONLY</p>
         <h1>DESIGN SYSTEM LAB</h1>
         <p>Use Tab / Shift+Tab para probar navegación por teclado.</p>
-        <p className="ui-primitives__planned">
-          Próximamente: 07 — NAVIGATION
-        </p>
+        <p className="ui-primitives__planned">Próximamente: 08 — FEEDBACK</p>
       </header>
 
       <section className="ui-primitives__section">
@@ -464,6 +466,57 @@ export function UiPrimitivesRoute() {
             </Card>
           </div>
         </div>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>07 — NAVIGATION</h2>
+        <h3>NAVIGATION BAR / NAVIGATION ITEM</h3>
+
+        <div className="ui-primitives__navigation-grid">
+          <div className="ui-primitives__navigation-example">
+            <h3>STATE COMPARISON</h3>
+            <div className="ui-primitives__navigation-row">
+              <NavigationItem active startIcon="⌂">
+                HOME
+              </NavigationItem>
+              <NavigationItem startIcon="⌂">HOME</NavigationItem>
+            </div>
+          </div>
+
+          <div className="ui-primitives__navigation-example">
+            <h3>REAL COMPOSITION</h3>
+            <NavigationBar aria-label="Navegación de ejemplo">
+              <NavigationItem active>HOME</NavigationItem>
+              <NavigationItem>WORK</NavigationItem>
+              <NavigationItem>ABOUT</NavigationItem>
+            </NavigationBar>
+          </div>
+
+          <div className="ui-primitives__navigation-example">
+            <h3>CONTROLLED STATE DEMO</h3>
+            <NavigationBar aria-label="Demo de navegación controlada">
+              {navigationItems.map((item) => (
+                <NavigationItem
+                  active={activeNavigation === item}
+                  key={item}
+                  onClick={() => setActiveNavigation(item)}
+                  startIcon="⌂"
+                >
+                  {item.toUpperCase()}
+                </NavigationItem>
+              ))}
+            </NavigationBar>
+            <p className="ui-primitives__technical-readout" aria-live="polite">
+              Active navigation: {activeNavigation}
+            </p>
+          </div>
+        </div>
+
+        <p className="ui-primitives__technical-readout">
+          El Lab usa buttons nativos para cambiar estado local. El consumer real
+          usará links y aria-current=&quot;page&quot; sin acoplar el componente al
+          router.
+        </p>
       </section>
     </div>
   )

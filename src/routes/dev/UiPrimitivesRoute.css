@@ -250,6 +250,33 @@
   margin-inline: calc(var(--card-padding) * -1);
 }
 
+.ui-primitives__navigation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: var(--space-lg);
+}
+
+.ui-primitives__navigation-example {
+  display: grid;
+  min-inline-size: 0;
+  align-content: start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-bg-surface);
+  overflow-x: auto;
+}
+
+.ui-primitives__navigation-example > .navigation-bar {
+  justify-self: start;
+}
+
+.ui-primitives__navigation-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+}
+
 @media (max-width: 520px) {
   .ui-primitives__row {
     gap: var(--space-sm);
