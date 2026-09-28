@@ -1,0 +1,102 @@
+.about-sheet__overlay {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: max(var(--space-md), env(safe-area-inset-top)) var(--space-md) max(var(--space-md), env(safe-area-inset-bottom));
+  background: var(--color-bg-scrim);
+}
+
+.about-sheet {
+  display: grid;
+  inline-size: min(100%, 397px);
+  max-block-size: 100%;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: var(--space-lg);
+  overflow: hidden;
+  padding: var(--space-lg) var(--space-md) var(--space-md);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background: var(--color-brand-secondary);
+  color: var(--color-text-primary);
+}
+
+.about-sheet__header h2,
+.about-sheet__header p,
+.about-sheet__body p,
+.about-sheet__secondary h3 {
+  margin: 0;
+}
+
+.about-sheet__header h2 {
+  font-family: var(--font-family-display);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.about-sheet__header p {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: 12px;
+}
+
+.about-sheet__body {
+  display: flex;
+  min-block-size: 0;
+  flex-direction: column;
+  gap: var(--space-lg);
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: var(--font-family-body);
+  font-size: 13px;
+}
+
+.about-sheet__media {
+  display: grid;
+  min-block-size: 228px;
+  place-items: center;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-display);
+}
+
+.about-sheet__dialogue {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.about-sheet__dialogue img {
+  inline-size: 81px;
+  block-size: 70px;
+  flex: 0 0 81px;
+  object-fit: contain;
+}
+
+.about-sheet__dialogue p {
+  flex: 1;
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-inverse);
+  color: var(--color-text-inverse);
+  font-family: var(--font-family-display);
+}
+
+.about-sheet__secondary {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.about-sheet__secondary h3 {
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.about-sheet__footer {
+  display: flex;
+  justify-content: end;
+}
