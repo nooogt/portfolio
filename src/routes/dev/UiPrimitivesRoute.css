@@ -318,6 +318,48 @@
   background: var(--color-bg-transparent);
 }
 
+.ui-primitives__footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: var(--space-lg);
+}
+
+.ui-primitives__footer-example {
+  display: grid;
+  min-inline-size: 0;
+  align-content: start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-neutral-100);
+}
+
+.ui-primitives__footer-example--brand-surface {
+  background: var(--color-brand-secondary);
+}
+
+.ui-primitives__footer-slot {
+  inline-size: 100%;
+  padding: var(--space-sm);
+  border: 1px dashed var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  text-align: center;
+}
+
+.ui-primitives__footer-actions {
+  flex-direction: row;
+}
+
+.ui-primitives__footer-caption {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.ui-primitives__footer-demo--transparent {
+  border-color: var(--color-bg-transparent);
+  background: var(--color-bg-transparent);
+}
+
 @media (max-width: 520px) {
   .ui-primitives__row {
     gap: var(--space-sm);

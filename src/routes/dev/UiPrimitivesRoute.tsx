@@ -15,6 +15,7 @@ import {
   HeaderEnd,
   HeaderStart,
 } from '../../components/ui/Header'
+import { Footer, FooterContent } from '../../components/ui/Footer'
 import {
   Dialog,
   DialogBody,
@@ -99,7 +100,7 @@ export function UiPrimitivesRoute() {
         <p className="ui-primitives__eyebrow">INTERNAL / DEV ONLY</p>
         <h1>DESIGN SYSTEM LAB</h1>
         <p>Use Tab / Shift+Tab para probar navegación por teclado.</p>
-        <p className="ui-primitives__planned">Próximamente: 09 — FEEDBACK</p>
+        <p className="ui-primitives__planned">Próximamente: 10 — FEEDBACK</p>
       </header>
 
       <section className="ui-primitives__section">
@@ -611,6 +612,71 @@ export function UiPrimitivesRoute() {
                 </CircleButton>
               </HeaderEnd>
             </Header>
+          </div>
+        </div>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>09 — FOOTER</h2>
+
+        <div className="ui-primitives__footer-grid">
+          <div className="ui-primitives__footer-example">
+            <h3>FOOTER — STRUCTURAL</h3>
+            <Footer>
+              <FooterContent>
+                <span className="ui-primitives__footer-slot">
+                  CONTAINER SLOT
+                </span>
+              </FooterContent>
+            </Footer>
+          </div>
+
+          <div className="ui-primitives__footer-example">
+            <h3>FOOTER — ACTION COMPOSITION</h3>
+            <Footer>
+              <FooterContent className="ui-primitives__footer-actions">
+                <CircleButton
+                  aria-label="Acción anterior de ejemplo"
+                  size={36}
+                  variant="outline"
+                >
+                  ←
+                </CircleButton>
+                <Button size={36} variant="outline">
+                  PRIMARY ACTION
+                </Button>
+              </FooterContent>
+            </Footer>
+          </div>
+
+          <div className="ui-primitives__footer-example">
+            <h3>FOOTER — NAVIGATION COMPOSITION</h3>
+            <Footer>
+              <FooterContent>
+                <NavigationBar aria-label="Navegación dentro del footer">
+                  {navigationItems.map((item) => (
+                    <NavigationItem
+                      active={activeNavigation === item}
+                      key={item}
+                      onClick={() => setActiveNavigation(item)}
+                    >
+                      {item.toUpperCase()}
+                    </NavigationItem>
+                  ))}
+                </NavigationBar>
+              </FooterContent>
+            </Footer>
+          </div>
+
+          <div className="ui-primitives__footer-example ui-primitives__footer-example--brand-surface">
+            <h3>FOOTER — TRANSPARENT COMPOSITION</h3>
+            <Footer className="ui-primitives__footer-demo--transparent">
+              <FooterContent>
+                <span className="ui-primitives__footer-caption">
+                  Background y border transparentes aplicados por el consumer
+                </span>
+              </FooterContent>
+            </Footer>
           </div>
         </div>
       </section>
