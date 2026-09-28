@@ -277,6 +277,47 @@
   gap: var(--space-md);
 }
 
+.ui-primitives__header-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr));
+  gap: var(--space-lg);
+}
+
+.ui-primitives__header-example {
+  display: grid;
+  min-inline-size: 0;
+  align-content: start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-neutral-100);
+}
+
+.ui-primitives__header-example--brand-surface {
+  background: var(--color-brand-secondary);
+}
+
+.ui-primitives__header-slot {
+  padding: var(--space-sm);
+  border: 1px dashed var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.ui-primitives__header-identity {
+  font-family: var(--font-family-display);
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+}
+
+.ui-primitives__header-caption {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.ui-primitives__header-demo--transparent {
+  background: var(--color-bg-transparent);
+}
+
 @media (max-width: 520px) {
   .ui-primitives__row {
     gap: var(--space-sm);

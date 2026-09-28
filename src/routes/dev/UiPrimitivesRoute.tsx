@@ -10,6 +10,12 @@ import { Card, CardBody, CardFooter, CardHeader } from '../../components/ui/Card
 import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
 import {
+  Header,
+  HeaderContent,
+  HeaderEnd,
+  HeaderStart,
+} from '../../components/ui/Header'
+import {
   Dialog,
   DialogBody,
   DialogClose,
@@ -93,7 +99,7 @@ export function UiPrimitivesRoute() {
         <p className="ui-primitives__eyebrow">INTERNAL / DEV ONLY</p>
         <h1>DESIGN SYSTEM LAB</h1>
         <p>Use Tab / Shift+Tab para probar navegación por teclado.</p>
-        <p className="ui-primitives__planned">Próximamente: 08 — FEEDBACK</p>
+        <p className="ui-primitives__planned">Próximamente: 09 — FEEDBACK</p>
       </header>
 
       <section className="ui-primitives__section">
@@ -517,6 +523,96 @@ export function UiPrimitivesRoute() {
           usará links y aria-current=&quot;page&quot; sin acoplar el componente al
           router.
         </p>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>08 — HEADER</h2>
+
+        <div className="ui-primitives__header-grid">
+          <div className="ui-primitives__header-example">
+            <h3>HEADER — STRUCTURAL</h3>
+            <Header>
+              <HeaderStart>
+                <span className="ui-primitives__header-slot">START</span>
+              </HeaderStart>
+              <HeaderContent>
+                <span className="ui-primitives__header-slot">CONTENT</span>
+              </HeaderContent>
+              <HeaderEnd>
+                <span className="ui-primitives__header-slot">END</span>
+              </HeaderEnd>
+            </Header>
+          </div>
+
+          <div className="ui-primitives__header-example">
+            <h3>HEADER — REALISTIC COMPOSITION</h3>
+            <Header>
+              <HeaderStart>
+                <strong className="ui-primitives__header-identity">
+                  STUDIO SAMPLE
+                </strong>
+              </HeaderStart>
+              <HeaderEnd>
+                <CircleButton
+                  aria-label="Acción de ejemplo"
+                  size={46}
+                  variant="outline"
+                >
+                  +
+                </CircleButton>
+              </HeaderEnd>
+            </Header>
+          </div>
+
+          <div className="ui-primitives__header-example ui-primitives__header-example--brand-surface">
+            <h3>HEADER — TRANSPARENT COMPOSITION</h3>
+            <Header className="ui-primitives__header-demo--transparent">
+              <HeaderContent>
+                <strong className="ui-primitives__header-identity">
+                  CONSUMER OVERRIDE
+                </strong>
+                <span className="ui-primitives__header-caption">
+                  Background transparente aplicado desde el Lab
+                </span>
+              </HeaderContent>
+              <HeaderEnd>
+                <CircleButton
+                  aria-label="Acción transparente de ejemplo"
+                  size={46}
+                  variant="outline"
+                >
+                  +
+                </CircleButton>
+              </HeaderEnd>
+            </Header>
+          </div>
+
+          <div className="ui-primitives__header-example">
+            <h3>HEADER — LONG CONTENT QA</h3>
+            <Header>
+              <HeaderStart>
+                <span className="ui-primitives__header-caption">START</span>
+              </HeaderStart>
+              <HeaderContent>
+                <strong className="ui-primitives__header-identity">
+                  Encabezado con contenido variable y deliberadamente más largo
+                </strong>
+                <span className="ui-primitives__header-caption">
+                  El contenido puede envolver sin ocultar la acción final.
+                </span>
+              </HeaderContent>
+              <HeaderEnd>
+                <CircleButton
+                  aria-label="Acción persistente de ejemplo"
+                  size={40}
+                  variant="ghost"
+                >
+                  →
+                </CircleButton>
+              </HeaderEnd>
+            </Header>
+          </div>
+        </div>
       </section>
     </div>
   )
