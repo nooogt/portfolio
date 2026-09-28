@@ -380,6 +380,29 @@
   background: var(--color-neutral-100);
 }
 
+.ui-primitives__code-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: var(--space-lg);
+}
+
+.ui-primitives__code-example {
+  display: grid;
+  min-inline-size: 0;
+  align-content: start;
+  justify-items: start;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-neutral-100);
+}
+
+.ui-primitives__code-statuses {
+  display: flex;
+  max-inline-size: 100%;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+}
+
 @media (max-width: 520px) {
   .ui-primitives__row {
     gap: var(--space-sm);

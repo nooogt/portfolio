@@ -6,6 +6,10 @@ import {
   type CircleButtonSize,
 } from '../../components/ui/CircleButton'
 import { Input } from '../../components/ui/Input'
+import {
+  CodeInput,
+  type CodeInputStatus,
+} from '../../components/ui/CodeInput'
 import { Card, CardBody, CardFooter, CardHeader } from '../../components/ui/Card'
 import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
@@ -95,6 +99,8 @@ export function UiPrimitivesRoute() {
   const [formDialogOpen, setFormDialogOpen] = useState(false)
   const [activeNavigation, setActiveNavigation] = useState('Home')
   const [copyToastVisible, setCopyToastVisible] = useState(false)
+  const [codeValue, setCodeValue] = useState('')
+  const [codeStatus, setCodeStatus] = useState<CodeInputStatus>('default')
 
   return (
     <div className="ui-primitives">
@@ -781,6 +787,109 @@ export function UiPrimitivesRoute() {
           El trigger y la visibilidad pertenecen al Lab. El Toast no incluye
           timer, queue, viewport ni estado interno.
         </p>
+      </section>
+
+      <section className="ui-primitives__section">
+        <h2>11 — CODE INPUT</h2>
+        <p>
+          Probá escribir o pegar hasta 6 caracteres. Usá las flechas, Backspace,
+          Delete y click en una celda para mover el cursor.
+        </p>
+
+        <div className="ui-primitives__code-grid">
+          <div className="ui-primitives__code-example">
+            <h3>DEFAULT / FOCUS</h3>
+            <CodeInput
+              defaultValue="247"
+              helperIcon="i"
+              helperText="Ingresá el código de acceso"
+              label="Código de acceso"
+              required
+            />
+          </div>
+          <div className="ui-primitives__code-example">
+            <h3>SUCCESS</h3>
+            <CodeInput
+              defaultValue="247"
+              helperIcon="✓"
+              helperText="Código correcto"
+              label="Código de acceso"
+              required
+              status="success"
+            />
+          </div>
+          <div className="ui-primitives__code-example">
+            <h3>DANGER</h3>
+            <CodeInput
+              defaultValue="247"
+              helperIcon="!"
+              helperText="Revisá el código"
+              label="Código de acceso"
+              required
+              status="danger"
+            />
+          </div>
+          <div className="ui-primitives__code-example">
+            <h3>WARNING</h3>
+            <CodeInput
+              defaultValue="247"
+              helperIcon="!"
+              helperText="Comprobá el código"
+              label="Código de acceso"
+              required
+              status="warning"
+            />
+          </div>
+          <div className="ui-primitives__code-example">
+            <h3>DISABLED</h3>
+            <CodeInput
+              defaultValue="247"
+              disabled
+              helperIcon="i"
+              helperText="Código no disponible"
+              label="Código de acceso"
+              required
+            />
+          </div>
+          <div className="ui-primitives__code-example">
+            <h3>VARIABLE LENGTH</h3>
+            <CodeInput
+              defaultValue="AB"
+              helperText="Specimen de cuatro celdas"
+              label="Código de cuatro caracteres"
+              length={4}
+            />
+          </div>
+          <div className="ui-primitives__code-example">
+            <h3>CODE INPUT — INTERACTION</h3>
+            <CodeInput
+              helperIcon="i"
+              helperText="Probá escribir o pegar hasta 6 caracteres."
+              label="Código interactivo"
+              onChange={(event) => setCodeValue(event.target.value)}
+              required
+              status={codeStatus}
+              value={codeValue}
+            />
+            <div className="ui-primitives__code-statuses">
+              {(['default', 'success', 'danger', 'warning'] as const).map(
+                (state) => (
+                  <Button
+                    key={state}
+                    onClick={() => setCodeStatus(state)}
+                    size={36}
+                    variant={codeStatus === state ? 'primary' : 'ghost'}
+                  >
+                    {state.toUpperCase()}
+                  </Button>
+                ),
+              )}
+            </div>
+            <p className="ui-primitives__technical-readout">
+              Value: <output>{codeValue || '—'}</output>
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   )
