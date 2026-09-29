@@ -44,6 +44,10 @@
   --shadow-sm-y: 2px;
   --shadow-sm-blur: 8px;
 
+  --shadow-md-color: #0000001f;
+  --shadow-md-y: 4px;
+  --shadow-md-blur: 12px;
+
   --shadow-lg-color: #00000029;
   --shadow-lg-y: 8px;
   --shadow-lg-blur: 24px;

@@ -3,6 +3,10 @@
   --elevation-low-y: var(--shadow-sm-y);
   --elevation-low-blur: var(--shadow-sm-blur);
 
+  --elevation-medium-color: var(--shadow-md-color);
+  --elevation-medium-y: var(--shadow-md-y);
+  --elevation-medium-blur: var(--shadow-md-blur);
+
   --elevation-high-color: var(--shadow-lg-color);
   --elevation-high-y: var(--shadow-lg-y);
   --elevation-high-blur: var(--shadow-lg-blur);

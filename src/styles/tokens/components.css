@@ -81,6 +81,13 @@
   --dialog-shadow-y: var(--elevation-high-y);
   --dialog-shadow-blur: var(--elevation-high-blur);
 
+  --popover-bg: var(--color-brand-secondary);
+  --popover-border: var(--color-border-subtle);
+  --popover-radius: var(--radius-lg);
+  --popover-shadow-color: var(--elevation-medium-color);
+  --popover-shadow-y: var(--elevation-medium-y);
+  --popover-shadow-blur: var(--elevation-medium-blur);
+
   --spacing-tab-bar-x: var(--space-sm);
   --spacing-tab-bar-y: var(--space-sm);
   --tab-bar-bg: var(--color-brand-secondary);

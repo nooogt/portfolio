@@ -1,0 +1,18 @@
+.popover {
+  display: flex;
+  inline-size: 304px;
+  max-inline-size: 100%;
+  flex-direction: column;
+  padding: var(--space-md);
+  border: 1px solid var(--popover-border);
+  border-radius: var(--popover-radius);
+  background: var(--popover-bg);
+  box-shadow: 0 var(--popover-shadow-y) var(--popover-shadow-blur) var(--popover-shadow-color);
+}
+
+.popover__content {
+  display: flex;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--space-sm);
+}

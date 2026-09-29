@@ -21,6 +21,7 @@ import {
 } from '../../components/ui/Header'
 import { Footer, FooterContent } from '../../components/ui/Footer'
 import { Toast } from '../../components/ui/Toast'
+import { Popover } from '../../components/ui/Popover'
 import {
   Dialog,
   DialogBody,
@@ -939,6 +940,25 @@ export function UiPrimitivesRoute() {
             <p className="ui-primitives__technical-readout">
               Value: <output>{codeValue || '—'}</output>
             </p>
+          </div>
+        </div>
+      </section>
+      <section className="ui-primitives__section">
+        <h2>12 — POPOVER</h2>
+        <div className="ui-primitives__popover-grid">
+          <div className="ui-primitives__popover-example">
+            <h3>POPOVER — SIMPLE CONTENT</h3>
+            <Popover>
+              <p>Contenido breve del Popover.</p>
+            </Popover>
+          </div>
+          <div className="ui-primitives__popover-example">
+            <h3>POPOVER — COMPOSITION</h3>
+            <Popover>
+              <strong>Acción de ejemplo</strong>
+              <p>El consumer compone texto y controles dentro del slot.</p>
+              <Button size={36} variant="ghost">ACCIÓN</Button>
+            </Popover>
           </div>
         </div>
       </section>
