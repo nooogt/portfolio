@@ -4,7 +4,7 @@ import { useReducedMotion } from 'motion/react'
 
 type AnimationControl = { stop: () => void }
 
-export function useProjectDetailTransition(projectId: string | null, onClosed: () => void) {
+export function usePortfolioDetailTransition(detailKey: string | null, onClosed: () => void) {
   const surfaceRef = useRef<HTMLDivElement | null>(null)
   const returnFocusRef = useRef<HTMLButtonElement | null>(null)
   const triggersRef = useRef(new Map<string, HTMLButtonElement>())
@@ -21,7 +21,7 @@ export function useProjectDetailTransition(projectId: string | null, onClosed: (
   }, [])
 
   useLayoutEffect(() => {
-    if (!projectId || reduceMotion) return
+    if (!detailKey || reduceMotion) return
     const surface = surfaceRef.current
     const source = sourceRectRef.current
     if (!surface || !source) return
@@ -29,8 +29,8 @@ export function useProjectDetailTransition(projectId: string | null, onClosed: (
     const destination = surface.getBoundingClientRect()
     if (!destination.width || !destination.height) return
     const overlay = surface.closest<HTMLElement>('.portfolio-detail-sheet__overlay')
-    const header = surface.querySelector<HTMLElement>('.home__detail-header')
-    const body = surface.querySelector<HTMLElement>('.home__detail-body')
+    const header = surface.querySelector<HTMLElement>('.portfolio-detail-sheet__header')
+    const body = surface.querySelector<HTMLElement>('.portfolio-detail-sheet__body')
     const footer = overlay?.querySelector<HTMLElement>('.portfolio-detail-sheet__footer')
     const offsetX = source.left - destination.left
     const offsetY = source.top - destination.top
@@ -53,15 +53,15 @@ export function useProjectDetailTransition(projectId: string | null, onClosed: (
     for (const [region, delay, distance] of [[header, 0.14, 10], [body, 0.18, 8], [footer, 0.25, 12]] as const) {
       if (region) animationsRef.current.push(animate(region, { opacity: [0, 1], y: [distance, 0] }, { duration: 0.25, delay, ease: 'easeOut' }))
     }
-  }, [projectId, reduceMotion])
+  }, [detailKey, reduceMotion])
 
-  const registerTrigger = (id: string, trigger: HTMLButtonElement) => {
-    triggersRef.current.set(id, trigger)
+  const registerTrigger = (key: string, trigger: HTMLButtonElement) => {
+    triggersRef.current.set(key, trigger)
     returnFocusRef.current = trigger
   }
 
-  const prepareOpen = (id: string) => {
-    const trigger = triggersRef.current.get(id)
+  const prepareOpen = (key: string) => {
+    const trigger = triggersRef.current.get(key)
     returnFocusRef.current = trigger ?? null
     sourceRectRef.current = trigger?.getBoundingClientRect() ?? null
     closingRef.current = false
@@ -79,7 +79,7 @@ export function useProjectDetailTransition(projectId: string | null, onClosed: (
       return
     }
     const surface = surfaceRef.current
-    const source = projectId ? triggersRef.current.get(projectId)?.getBoundingClientRect() : null
+    const source = detailKey ? triggersRef.current.get(detailKey)?.getBoundingClientRect() : null
     if (!surface || !source) {
       onClosedRef.current()
       return
@@ -100,8 +100,8 @@ export function useProjectDetailTransition(projectId: string | null, onClosed: (
     const startScaleX = current.width / destination.width
     const startScaleY = current.height / destination.height
     const overlay = surface.closest<HTMLElement>('.portfolio-detail-sheet__overlay')
-    const header = surface.querySelector<HTMLElement>('.home__detail-header')
-    const body = surface.querySelector<HTMLElement>('.home__detail-body')
+    const header = surface.querySelector<HTMLElement>('.portfolio-detail-sheet__header')
+    const body = surface.querySelector<HTMLElement>('.portfolio-detail-sheet__body')
     const footer = overlay?.querySelector<HTMLElement>('.portfolio-detail-sheet__footer')
     const exitAnimations: AnimationControl[] = []
     for (const region of [header, body, footer]) {

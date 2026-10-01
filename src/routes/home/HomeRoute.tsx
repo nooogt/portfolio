@@ -11,7 +11,7 @@ import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
 import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
-import { useProjectDetailTransition } from '../../components/portfolio/useProjectDetailTransition'
+import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
 import './HomeRoute.css'
 
 const assetPath = '/home-assets/'
@@ -98,7 +98,7 @@ export function HomeRoute() {
   const [accessCode, setAccessCode] = useState('')
   const [accessError, setAccessError] = useState(false)
   const pageRef = useRef<HTMLDivElement | null>(null)
-  const detailTransition = useProjectDetailTransition(selectedProject?.slug ?? null, () => setSelectedProject(null))
+  const detailTransition = usePortfolioDetailTransition(selectedProject?.slug ?? null, () => setSelectedProject(null))
   const titleId = useId()
 
   const onProjectOpen = (project: HomeProject, trigger: HTMLButtonElement) => {

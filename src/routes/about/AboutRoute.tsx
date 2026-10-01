@@ -7,6 +7,7 @@ import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
 import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
+import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
 import './AboutRoute.css'
 
 type Section = 'section-01' | 'section-02' | 'section-03'
@@ -28,8 +29,8 @@ function SunIcon() {
 
 export function AboutRoute() {
   const [selectedSection, setSelectedSection] = useState<Section | null>(null)
-  const returnFocusRef = useRef<HTMLButtonElement | null>(null)
   const pageRef = useRef<HTMLDivElement | null>(null)
+  const detailTransition = usePortfolioDetailTransition(selectedSection, () => setSelectedSection(null))
   const titleId = useId()
   const selected = sections.find((section) => section.id === selectedSection)
 
@@ -59,7 +60,11 @@ export function AboutRoute() {
           <h1>ABOUT</h1>
           <div className="about__sections">
             {sections.map((section) => (
-              <button className="about__selector" key={section.id} onClick={(event) => { returnFocusRef.current = event.currentTarget; setSelectedSection(section.id) }} type="button">
+              <button className="about__selector" key={section.id} onClick={(event) => {
+                detailTransition.registerTrigger(section.id, event.currentTarget)
+                detailTransition.prepareOpen(section.id)
+                setSelectedSection(section.id)
+              }} type="button">
                 <span>{section.number}</span>
                 <span>Section label</span>
               </button>
@@ -77,7 +82,7 @@ export function AboutRoute() {
           </FooterContent>
         </Footer>
       </div>
-      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={() => setSelectedSection(null)} open={selectedSection !== null} returnFocusRef={returnFocusRef}>
+      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={detailTransition.close} open={selectedSection !== null} returnFocusRef={detailTransition.returnFocusRef} surfaceRef={detailTransition.surfaceRef}>
         <PortfolioDetailSheetHeader className="about-sheet__header">
           <h2 id={titleId}>{selected?.number ?? ''}</h2>
           <p>Section label</p>
@@ -98,7 +103,7 @@ export function AboutRoute() {
           </section>
         </PortfolioDetailSheetBody>
         <PortfolioDetailSheetFooter>
-          <Button onClick={() => setSelectedSection(null)} size={36} variant="outline">BACK / CLOSE</Button>
+          <Button onClick={detailTransition.close} size={36} variant="outline">BACK / CLOSE</Button>
         </PortfolioDetailSheetFooter>
       </PortfolioDetailSheet>
     </div>
