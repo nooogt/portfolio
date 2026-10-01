@@ -133,14 +133,52 @@
 .home__card-link {
   display: block;
   min-inline-size: 0;
+  position: relative;
   color: inherit;
   text-decoration: none;
 }
 
-.home__card-link:focus-visible {
+.home__card-trigger {
+  position: absolute;
+  inset: 0;
+  inline-size: 100%;
+  block-size: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: var(--card-radius-default);
+  background: transparent;
+  cursor: pointer;
+}
+
+.home__card-trigger:focus-visible {
   border-radius: var(--card-radius-default);
   outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
+}
+
+.home__detail-header h2,
+.home__detail-header p,
+.home__detail-body p {
+  margin: 0;
+}
+
+.home__detail-header h2 {
+  font-family: var(--font-family-display);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.home__detail-header p {
+  color: var(--color-text-secondary);
+  font-family: var(--font-family-body);
+  font-size: 12px;
+}
+
+.home__detail-media {
+  inline-size: 100%;
+  min-block-size: 228px;
+  border-radius: var(--radius-lg);
+  object-fit: cover;
 }
 
 .home__card.card {

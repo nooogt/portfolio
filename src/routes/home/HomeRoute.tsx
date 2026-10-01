@@ -1,3 +1,4 @@
+import { useId, useRef, useState } from 'react'
 import { Card, CardBody, CardHeader } from '../../components/ui/Card'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Footer, FooterContent } from '../../components/ui/Footer'
@@ -5,6 +6,7 @@ import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
 import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
+import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
 import './HomeRoute.css'
 
 const assetPath = '/home-assets/'
@@ -26,23 +28,30 @@ function SunIcon() {
   )
 }
 
-interface HomeProjectCardProps {
+interface HomeProject {
   title: string
   slug: string
   media: string
   alt: string
+  metadata: string
   featured?: boolean
   tall?: boolean
 }
 
-function HomeProjectCard({
-  title,
-  slug,
-  media,
-  alt,
-  featured = false,
-  tall = false,
-}: HomeProjectCardProps) {
+const projects: HomeProject[] = [
+  { slug: 'prototype-factory', title: 'PROTOTYPE FACTORY', media: 'prototype-factory-media.png', alt: 'Vista de carpetas y documentos de Prototype Factory', metadata: 'AI · Design Systems · Prototyping', featured: true },
+  { slug: 'rampet', title: 'RAMPET', media: 'rampet-media.png', alt: 'Captura de la interfaz móvil de Rampet', metadata: 'Product Design · Mobile · Systems', tall: true },
+  { slug: 'hope', title: 'HOPE', media: 'hope-media.png', alt: 'Arte de la aplicación Hope', metadata: 'Product Design · Mobile · Systems' },
+  { slug: 'conexcom', title: 'CONEXCOM', media: 'conexcom-media.png', alt: 'Captura de un formulario de Conexcom', metadata: 'Product Design · Mobile · Systems' },
+]
+
+interface HomeProjectCardProps {
+  project: HomeProject
+  onOpen: (project: HomeProject, trigger: HTMLButtonElement) => void
+}
+
+function HomeProjectCard({ project, onOpen }: HomeProjectCardProps) {
+  const { title, media, alt, metadata, featured = false, tall = false } = project
   const linkClasses = [
     'home__card-link',
     featured && 'home__card-link--featured',
@@ -52,7 +61,7 @@ function HomeProjectCard({
     .join(' ')
 
   return (
-    <a className={linkClasses} href={`/projects/${slug}`}>
+    <div className={linkClasses}>
       <Card className="home__card">
         <CardHeader className="home__card-header">
           {featured ? (
@@ -60,11 +69,7 @@ function HomeProjectCard({
           ) : (
             <h3 className="home__card-title">{title}</h3>
           )}
-          <p className="home__card-meta">
-            {featured
-              ? 'AI · Design Systems · Prototyping'
-              : 'Product Design · Mobile · Systems'}
-          </p>
+          <p className="home__card-meta">{metadata}</p>
         </CardHeader>
         <CardBody className="home__card-body">
           <img
@@ -74,15 +79,26 @@ function HomeProjectCard({
           />
         </CardBody>
       </Card>
-    </a>
+      <button aria-label={`Abrir detalle de ${title}`} className="home__card-trigger" onClick={(event) => onOpen(project, event.currentTarget)} type="button" />
+    </div>
   )
 }
 
 export function HomeRoute() {
+  const [selectedProject, setSelectedProject] = useState<HomeProject | null>(null)
+  const pageRef = useRef<HTMLDivElement | null>(null)
+  const returnFocusRef = useRef<HTMLButtonElement | null>(null)
+  const titleId = useId()
+
+  const onProjectOpen = (project: HomeProject, trigger: HTMLButtonElement) => {
+    returnFocusRef.current = trigger
+    setSelectedProject(project)
+  }
+
   return (
     <div className="home">
       <div aria-hidden="true" className="home__world" />
-      <div className="home__page">
+      <div className="home__page" ref={pageRef}>
       <Header className="home__header">
         <HeaderContent className="home__header-content">
           <div className="home__identity">
@@ -118,13 +134,7 @@ export function HomeRoute() {
 
       <main className="home__content">
         <section aria-label="Proyecto destacado" className="home__featured">
-          <HomeProjectCard
-            alt="Vista de carpetas y documentos de Prototype Factory"
-            featured
-            media="prototype-factory-media.png"
-            slug="prototype-factory"
-            title="PROTOTYPE FACTORY"
-          />
+          <HomeProjectCard onOpen={onProjectOpen} project={projects[0]} />
           <div className="home__dialogue-scene">
             <img
               alt="QB, personaje guía del portfolio"
@@ -147,25 +157,7 @@ export function HomeRoute() {
         <section aria-labelledby="selected-work-title" className="home__selected">
           <h2 id="selected-work-title">SELECTED WORK</h2>
           <div className="home__projects-grid">
-            <HomeProjectCard
-              alt="Captura de la interfaz móvil de Rampet"
-              media="rampet-media.png"
-              slug="rampet"
-              tall
-              title="RAMPET"
-            />
-            <HomeProjectCard
-              alt="Arte de la aplicación Hope"
-              media="hope-media.png"
-              slug="hope"
-              title="HOPE"
-            />
-            <HomeProjectCard
-              alt="Captura de un formulario de Conexcom"
-              media="conexcom-media.png"
-              slug="conexcom"
-              title="CONEXCOM"
-            />
+            {projects.slice(1).map((project) => <HomeProjectCard key={project.slug} onOpen={onProjectOpen} project={project} />)}
           </div>
         </section>
       </main>
@@ -184,6 +176,27 @@ export function HomeRoute() {
         </FooterContent>
       </Footer>
       </div>
+      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={() => setSelectedProject(null)} open={selectedProject !== null} returnFocusRef={returnFocusRef}>
+        <PortfolioDetailSheetHeader className="home__detail-header">
+          <h2 id={titleId}>{selectedProject?.title}</h2>
+          <p>{selectedProject?.metadata}</p>
+        </PortfolioDetailSheetHeader>
+        <PortfolioDetailSheetBody className="home__detail-body">
+          {selectedProject ? (
+            <>
+              <p>Detalle placeholder de {selectedProject.title}.</p>
+              <img alt={selectedProject.alt} className="home__detail-media" src={`${assetPath}${selectedProject.media}`} />
+              <p>Project ID: {selectedProject.slug}</p>
+              <p>Este contenido será reemplazado por el case study definitivo.</p>
+            </>
+          ) : null}
+        </PortfolioDetailSheetBody>
+        <PortfolioDetailSheetFooter>
+          <CircleButton aria-label="Volver a proyectos" onClick={() => setSelectedProject(null)} size={36} variant="outline">
+            <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+          </CircleButton>
+        </PortfolioDetailSheetFooter>
+      </PortfolioDetailSheet>
     </div>
   )
 }
