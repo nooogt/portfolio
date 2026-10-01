@@ -1,6 +1,10 @@
 import { useId, useRef, useState } from 'react'
+import type { FormEvent } from 'react'
 import { Card, CardBody, CardHeader } from '../../components/ui/Card'
 import { CircleButton } from '../../components/ui/CircleButton'
+import { Button } from '../../components/ui/Button'
+import { CodeInput } from '../../components/ui/CodeInput'
+import { Dialog, DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../../components/ui/Dialog'
 import { Footer, FooterContent } from '../../components/ui/Footer'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { NavigationBar } from '../../components/ui/NavigationBar'
@@ -10,6 +14,8 @@ import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFoo
 import './HomeRoute.css'
 
 const assetPath = '/home-assets/'
+// TEMPORARY: Replace with the numeric code distributed in the CV before publishing.
+const temporaryAccessCode = '482731'
 
 function SunIcon() {
   return (
@@ -34,6 +40,7 @@ interface HomeProject {
   media: string
   alt: string
   metadata: string
+  requiresAccess?: boolean
   featured?: boolean
   tall?: boolean
 }
@@ -42,7 +49,7 @@ const projects: HomeProject[] = [
   { slug: 'prototype-factory', title: 'PROTOTYPE FACTORY', media: 'prototype-factory-media.png', alt: 'Vista de carpetas y documentos de Prototype Factory', metadata: 'AI · Design Systems · Prototyping', featured: true },
   { slug: 'rampet', title: 'RAMPET', media: 'rampet-media.png', alt: 'Captura de la interfaz móvil de Rampet', metadata: 'Product Design · Mobile · Systems', tall: true },
   { slug: 'hope', title: 'HOPE', media: 'hope-media.png', alt: 'Arte de la aplicación Hope', metadata: 'Product Design · Mobile · Systems' },
-  { slug: 'conexcom', title: 'CONEXCOM', media: 'conexcom-media.png', alt: 'Captura de un formulario de Conexcom', metadata: 'Product Design · Mobile · Systems' },
+  { slug: 'conexcom', title: 'CONEXCOM', media: 'conexcom-media.png', alt: 'Captura de un formulario de Conexcom', metadata: 'Product Design · Mobile · Systems', requiresAccess: true },
 ]
 
 interface HomeProjectCardProps {
@@ -86,13 +93,42 @@ function HomeProjectCard({ project, onOpen }: HomeProjectCardProps) {
 
 export function HomeRoute() {
   const [selectedProject, setSelectedProject] = useState<HomeProject | null>(null)
+  const [pendingProject, setPendingProject] = useState<HomeProject | null>(null)
+  const [accessCode, setAccessCode] = useState('')
+  const [accessError, setAccessError] = useState(false)
   const pageRef = useRef<HTMLDivElement | null>(null)
   const returnFocusRef = useRef<HTMLButtonElement | null>(null)
   const titleId = useId()
 
   const onProjectOpen = (project: HomeProject, trigger: HTMLButtonElement) => {
     returnFocusRef.current = trigger
-    setSelectedProject(project)
+    if (project.requiresAccess) {
+      setAccessCode('')
+      setAccessError(false)
+      setPendingProject(project)
+    } else {
+      setSelectedProject(project)
+    }
+  }
+
+  const closeAccessDialog = () => {
+    setPendingProject(null)
+    setAccessCode('')
+    setAccessError(false)
+  }
+
+  const submitAccessCode = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (!pendingProject) return
+    if (accessCode !== temporaryAccessCode) {
+      setAccessError(true)
+      return
+    }
+
+    const project = pendingProject
+    closeAccessDialog()
+    // Let Dialog release its focus trap and scroll lock before opening the sheet.
+    window.setTimeout(() => setSelectedProject(project), 0)
   }
 
   return (
@@ -176,6 +212,34 @@ export function HomeRoute() {
         </FooterContent>
       </Footer>
       </div>
+      <Dialog onOpenChange={(open) => { if (!open) closeAccessDialog() }} open={pendingProject !== null}>
+        <form className="home__access-form" onSubmit={submitAccessCode}>
+          <DialogHeader>
+            <DialogTitle>Acceso al proyecto</DialogTitle>
+          </DialogHeader>
+          <DialogBody>
+            <DialogDescription>Este proyecto está protegido. Ingresá el código indicado en el CV.</DialogDescription>
+            <CodeInput
+              autoComplete="one-time-code"
+              className="home__access-code"
+              helperText={accessError ? <span role="alert">Código incorrecto.</span> : undefined}
+              inputMode="numeric"
+              label="Código de acceso"
+              onChange={(event) => {
+                setAccessCode(event.target.value.replace(/\D/g, ''))
+                setAccessError(false)
+              }}
+              pattern="[0-9]*"
+              status={accessError ? 'danger' : 'default'}
+              value={accessCode}
+            />
+          </DialogBody>
+          <DialogFooter>
+            <Button onClick={closeAccessDialog} variant="ghost">Cancelar</Button>
+            <Button type="submit">Acceder</Button>
+          </DialogFooter>
+        </form>
+      </Dialog>
       <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={() => setSelectedProject(null)} open={selectedProject !== null} returnFocusRef={returnFocusRef}>
         <PortfolioDetailSheetHeader className="home__detail-header">
           <h2 id={titleId}>{selectedProject?.title}</h2>

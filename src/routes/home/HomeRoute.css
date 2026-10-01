@@ -156,6 +156,27 @@
   outline-offset: 2px;
 }
 
+.home__access-form {
+  display: flex;
+  min-inline-size: 0;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.home__access-code {
+  inline-size: 100%;
+}
+
+.home__access-code .code-input__group {
+  gap: var(--space-xs);
+}
+
+.home__access-code .code-input__cell {
+  min-inline-size: 0;
+  inline-size: auto;
+  flex: 1 1 0;
+}
+
 .home__detail-header h2,
 .home__detail-header p,
 .home__detail-body p {
