@@ -1,5 +1,7 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useLayoutEffect, useRef, useState } from 'react'
 import type { FormEvent } from 'react'
+import { animate } from 'motion'
+import { useReducedMotion } from 'motion/react'
 import { Card, CardBody, CardHeader } from '../../components/ui/Card'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Button } from '../../components/ui/Button'
@@ -98,7 +100,46 @@ export function HomeRoute() {
   const [accessError, setAccessError] = useState(false)
   const pageRef = useRef<HTMLDivElement | null>(null)
   const returnFocusRef = useRef<HTMLButtonElement | null>(null)
+  const surfaceRef = useRef<HTMLDivElement | null>(null)
+  const rampetSourceRectRef = useRef<DOMRect | null>(null)
+  const rampetClosingRef = useRef(false)
+  const rampetAnimationsRef = useRef<Array<{ stop: () => void }>>([])
+  const reduceMotion = useReducedMotion()
   const titleId = useId()
+
+  useLayoutEffect(() => {
+    if (selectedProject?.slug !== 'rampet' || reduceMotion) return
+    const surface = surfaceRef.current
+    const source = rampetSourceRectRef.current
+    if (!surface || !source) return
+
+    const destination = surface.getBoundingClientRect()
+    const overlay = surface.closest<HTMLElement>('.portfolio-detail-sheet__overlay')
+    const header = surface.querySelector<HTMLElement>('.home__detail-header')
+    const body = surface.querySelector<HTMLElement>('.home__detail-body')
+    const footer = overlay?.querySelector<HTMLElement>('.portfolio-detail-sheet__footer')
+    const offsetX = source.left - destination.left
+    const offsetY = source.top - destination.top
+    const scaleX = source.width / destination.width
+    const scaleY = source.height / destination.height
+    surface.style.transformOrigin = 'top left'
+    surface.style.willChange = 'transform'
+
+    for (const region of [header, body, footer]) {
+      if (region) region.style.opacity = '0'
+    }
+    const surfaceAnimation = animate(surface, {
+      x: [offsetX, 0], y: [offsetY, 0], scaleX: [scaleX, 1], scaleY: [scaleY, 1],
+    }, { duration: 0.44, ease: [0.22, 1, 0.36, 1] })
+    rampetAnimationsRef.current = [surfaceAnimation]
+    if (overlay) {
+      const scrim = getComputedStyle(overlay).backgroundColor
+      rampetAnimationsRef.current.push(animate(overlay, { backgroundColor: ['rgba(0, 0, 0, 0)', scrim] }, { duration: 0.26 }))
+    }
+    for (const [region, delay, distance] of [[header, 0.14, 10], [body, 0.18, 8], [footer, 0.25, 12]] as const) {
+      if (region) rampetAnimationsRef.current.push(animate(region, { opacity: [0, 1], y: [distance, 0] }, { duration: 0.25, delay, ease: 'easeOut' }))
+    }
+  }, [selectedProject, reduceMotion])
 
   const onProjectOpen = (project: HomeProject, trigger: HTMLButtonElement) => {
     returnFocusRef.current = trigger
@@ -107,8 +148,53 @@ export function HomeRoute() {
       setAccessError(false)
       setPendingProject(project)
     } else {
+      if (project.slug === 'rampet') {
+        rampetSourceRectRef.current = trigger.getBoundingClientRect()
+        rampetClosingRef.current = false
+      }
       setSelectedProject(project)
     }
+  }
+
+  const closeProjectDetail = () => {
+    if (selectedProject?.slug !== 'rampet' || reduceMotion) {
+      setSelectedProject(null)
+      return
+    }
+    if (rampetClosingRef.current) return
+    const surface = surfaceRef.current
+    const source = returnFocusRef.current?.getBoundingClientRect()
+    if (!surface || !source) {
+      setSelectedProject(null)
+      return
+    }
+
+    rampetClosingRef.current = true
+    const current = surface.getBoundingClientRect()
+    rampetAnimationsRef.current.forEach((animation) => animation.stop())
+    surface.style.transform = 'none'
+    const destination = surface.getBoundingClientRect()
+    const startX = current.left - destination.left
+    const startY = current.top - destination.top
+    const startScaleX = current.width / destination.width
+    const startScaleY = current.height / destination.height
+    const overlay = surface.closest<HTMLElement>('.portfolio-detail-sheet__overlay')
+    const header = surface.querySelector<HTMLElement>('.home__detail-header')
+    const body = surface.querySelector<HTMLElement>('.home__detail-body')
+    const footer = overlay?.querySelector<HTMLElement>('.portfolio-detail-sheet__footer')
+    for (const region of [header, body, footer]) {
+      if (region) animate(region, { opacity: 0, y: 8 }, { duration: 0.16 })
+    }
+    if (overlay) animate(overlay, { backgroundColor: 'rgba(0, 0, 0, 0)' }, { duration: 0.32 })
+    animate(surface, {
+      x: [startX, source.left - destination.left],
+      y: [startY, source.top - destination.top],
+      scaleX: [startScaleX, source.width / destination.width],
+      scaleY: [startScaleY, source.height / destination.height],
+    }, { duration: 0.38, ease: [0.32, 0, 0.67, 1] }).then(() => {
+      setSelectedProject(null)
+      rampetClosingRef.current = false
+    })
   }
 
   const closeAccessDialog = () => {
@@ -240,7 +326,7 @@ export function HomeRoute() {
           </DialogFooter>
         </form>
       </Dialog>
-      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={() => setSelectedProject(null)} open={selectedProject !== null} returnFocusRef={returnFocusRef}>
+      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={closeProjectDetail} open={selectedProject !== null} returnFocusRef={returnFocusRef} surfaceRef={selectedProject?.slug === 'rampet' ? surfaceRef : undefined}>
         <PortfolioDetailSheetHeader className="home__detail-header">
           <h2 id={titleId}>{selectedProject?.title}</h2>
           <p>{selectedProject?.metadata}</p>
@@ -256,7 +342,7 @@ export function HomeRoute() {
           ) : null}
         </PortfolioDetailSheetBody>
         <PortfolioDetailSheetFooter>
-          <CircleButton aria-label="Volver a proyectos" onClick={() => setSelectedProject(null)} size={36} variant="outline">
+          <CircleButton aria-label="Volver a proyectos" onClick={closeProjectDetail} size={36} variant="outline">
             <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
           </CircleButton>
         </PortfolioDetailSheetFooter>

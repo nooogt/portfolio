@@ -1,5 +1,5 @@
 import { Children, isValidElement, useEffect, useRef } from 'react'
-import type { HTMLAttributes, KeyboardEvent as ReactKeyboardEvent, ReactNode, RefObject } from 'react'
+import type { HTMLAttributes, KeyboardEvent as ReactKeyboardEvent, ReactNode, Ref, RefObject } from 'react'
 import { createPortal } from 'react-dom'
 import './PortfolioDetailSheet.css'
 
@@ -11,10 +11,11 @@ interface PortfolioDetailSheetProps {
   returnFocusRef: RefObject<HTMLElement | null>
   backgroundRef: RefObject<HTMLElement | null>
   labelledBy: string
+  surfaceRef?: Ref<HTMLDivElement>
   children: ReactNode
 }
 
-export function PortfolioDetailSheet({ open, onClose, returnFocusRef, backgroundRef, labelledBy, children }: PortfolioDetailSheetProps) {
+export function PortfolioDetailSheet({ open, onClose, returnFocusRef, backgroundRef, labelledBy, surfaceRef, children }: PortfolioDetailSheetProps) {
   const panelRef = useRef<HTMLElement>(null)
   const onCloseRef = useRef(onClose)
   const regions = Children.toArray(children)
@@ -70,7 +71,7 @@ export function PortfolioDetailSheet({ open, onClose, returnFocusRef, background
   return createPortal(
     <div className="portfolio-detail-sheet__overlay">
       <section aria-labelledby={labelledBy} aria-modal="true" className="portfolio-detail-sheet" onKeyDown={handleKeyDown} ref={panelRef} role="dialog" tabIndex={-1}>
-        <div className="portfolio-detail-sheet__surface">{surface}</div>
+        <div className="portfolio-detail-sheet__surface" ref={surfaceRef}>{surface}</div>
         {footer}
       </section>
     </div>,
