@@ -4,6 +4,7 @@ import { Footer, FooterContent } from '../../components/ui/Footer'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
+import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
 import './HomeRoute.css'
 
 const assetPath = '/home-assets/'
@@ -21,22 +22,6 @@ function SunIcon() {
     >
       <circle cx="12" cy="12" r="4" />
       <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-    </svg>
-  )
-}
-
-function PhoneIcon() {
-  return (
-    <svg
-      aria-hidden="true"
-      fill="none"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="1.8"
-      viewBox="0 0 24 24"
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 3.09 5.18 2 2 0 0 1 5.08 3h3a2 2 0 0 1 2 1.72c.13.97.37 1.92.72 2.82a2 2 0 0 1-.45 2.11L9.09 10.9a16 16 0 0 0 4 4l1.27-1.26a2 2 0 0 1 2.1-.45c.91.35 1.86.59 2.83.72A2 2 0 0 1 22 16.92Z" />
     </svg>
   )
 }
@@ -195,15 +180,7 @@ export function HomeRoute() {
               ABOUT
             </NavigationItem>
           </NavigationBar>
-          <CircleButton
-            as="a"
-            aria-label="Contacto"
-            href="/contact"
-            size={48}
-            variant="secondary"
-          >
-            <PhoneIcon />
-          </CircleButton>
+          <PortfolioContactLauncher />
         </FooterContent>
       </Footer>
       </div>
