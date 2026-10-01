@@ -1,11 +1,12 @@
-import { useRef, useState } from 'react'
+import { useId, useRef, useState } from 'react'
+import { Button } from '../../components/ui/Button'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Footer, FooterContent } from '../../components/ui/Footer'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { NavigationBar } from '../../components/ui/NavigationBar'
 import { NavigationItem } from '../../components/ui/NavigationItem'
 import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
-import { AboutDetailSheet } from './AboutDetailSheet'
+import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
 import './AboutRoute.css'
 
 type Section = 'section-01' | 'section-02' | 'section-03'
@@ -28,12 +29,14 @@ function SunIcon() {
 export function AboutRoute() {
   const [selectedSection, setSelectedSection] = useState<Section | null>(null)
   const returnFocusRef = useRef<HTMLButtonElement | null>(null)
+  const pageRef = useRef<HTMLDivElement | null>(null)
+  const titleId = useId()
   const selected = sections.find((section) => section.id === selectedSection)
 
   return (
     <div className="about">
       <div aria-hidden="true" className="about__world" />
-      <div className="about__page" inert={selectedSection !== null}>
+      <div className="about__page" ref={pageRef}>
         <Header className="about__header">
           <HeaderContent className="about__header-content">
             <div className="about__identity">
@@ -74,7 +77,30 @@ export function AboutRoute() {
           </FooterContent>
         </Footer>
       </div>
-      <AboutDetailSheet key={selectedSection ?? 'closed'} onClose={() => setSelectedSection(null)} open={selectedSection !== null} returnFocusRef={returnFocusRef} title={selected?.number ?? ''} />
+      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={() => setSelectedSection(null)} open={selectedSection !== null} returnFocusRef={returnFocusRef}>
+        <PortfolioDetailSheetHeader className="about-sheet__header">
+          <h2 id={titleId}>{selected?.number ?? ''}</h2>
+          <p>Section label</p>
+        </PortfolioDetailSheetHeader>
+        <PortfolioDetailSheetBody className="about-sheet__body">
+          <p>Detalle de ejemplo para visualizar la estructura.</p>
+          <div aria-label="Media placeholder" className="about-sheet__media" role="img">MEDIA PLACEHOLDER</div>
+          <div className="about-sheet__dialogue">
+            <img alt="" src="/home-assets/qb.png" />
+            <p>QB / dialogue block</p>
+          </div>
+          <section className="about-sheet__secondary">
+            <h3>SECONDARY CONTENT</h3>
+            <p>Contenido estructural de ejemplo.</p>
+            <p>Contenido estructural de ejemplo.</p>
+            <p>Contenido estructural de ejemplo.</p>
+            <p>Contenido estructural de ejemplo.</p>
+          </section>
+        </PortfolioDetailSheetBody>
+        <PortfolioDetailSheetFooter>
+          <Button onClick={() => setSelectedSection(null)} size={36} variant="outline">BACK / CLOSE</Button>
+        </PortfolioDetailSheetFooter>
+      </PortfolioDetailSheet>
     </div>
   )
 }
