@@ -84,7 +84,7 @@ export function PortfolioDetailSheetHeader({ className, ...props }: HTMLAttribut
 }
 
 export function PortfolioDetailSheetBody({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
-  return <div {...props} className={['portfolio-detail-sheet__body', className].filter(Boolean).join(' ')} />
+  return <div {...props} className={['portfolio-detail-sheet__body', 'portfolio-scrollbar', 'portfolio-scrollbar--light', className].filter(Boolean).join(' ')} />
 }
 
 export function PortfolioDetailSheetFooter({ className, ...props }: HTMLAttributes<HTMLElement>) {

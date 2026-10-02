@@ -192,7 +192,7 @@ export function HomeRoute() {
         </HeaderEnd>
       </Header>
 
-      <main className="home__content">
+      <main className="home__content portfolio-scrollbar portfolio-scrollbar--dark">
         <section aria-label="Proyecto destacado" className="home__featured">
           <HomeProjectCard index={0} onOpen={onProjectOpen} project={projects[0]} reducedMotion={reducedMotion} />
           <div className="home__dialogue-scene">

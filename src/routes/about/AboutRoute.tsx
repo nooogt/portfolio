@@ -100,7 +100,7 @@ export function AboutRoute() {
           </HeaderEnd>
         </Header>
 
-        <main className="about__main">
+        <main className="about__main portfolio-scrollbar portfolio-scrollbar--dark">
           <h1>ABOUT</h1>
           <div className="about__sections">
             {sections.map((section, index) => <AboutSectionCard index={index} key={section.id} onOpen={onSectionOpen} reducedMotion={reducedMotion} section={section} />)}

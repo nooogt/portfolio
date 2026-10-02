@@ -1,0 +1,48 @@
+.portfolio-scrollbar {
+  --portfolio-scrollbar-size: 8px;
+  --portfolio-scrollbar-radius: var(--radius-pill);
+}
+
+.portfolio-scrollbar--dark {
+  --portfolio-scrollbar-track: var(--color-bg-inverse);
+  --portfolio-scrollbar-thumb: var(--color-brand-secondary);
+  --portfolio-scrollbar-thumb-hover: var(--color-brand-yellow-400);
+}
+
+.portfolio-scrollbar--light {
+  --portfolio-scrollbar-track: var(--color-brand-secondary);
+  --portfolio-scrollbar-thumb: var(--color-brand-primary-strong);
+  --portfolio-scrollbar-thumb-hover: var(--color-interaction-brown-hover);
+}
+
+@media (forced-colors: none) {
+  .portfolio-scrollbar {
+    scrollbar-color: var(--portfolio-scrollbar-thumb) var(--portfolio-scrollbar-track);
+    scrollbar-width: thin;
+  }
+
+  @supports selector(::-webkit-scrollbar) {
+    .portfolio-scrollbar {
+      scrollbar-color: auto;
+      scrollbar-width: auto;
+    }
+
+    .portfolio-scrollbar::-webkit-scrollbar {
+      width: var(--portfolio-scrollbar-size);
+      height: var(--portfolio-scrollbar-size);
+    }
+
+    .portfolio-scrollbar::-webkit-scrollbar-track {
+      background: var(--portfolio-scrollbar-track);
+    }
+
+    .portfolio-scrollbar::-webkit-scrollbar-thumb {
+      border-radius: var(--portfolio-scrollbar-radius);
+      background: var(--portfolio-scrollbar-thumb);
+    }
+
+    .portfolio-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: var(--portfolio-scrollbar-thumb-hover);
+    }
+  }
+}

@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom'
 import { Footer, FooterContent } from '../../components/ui/Footer'
 import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
 import { PortfolioNavigation } from '../../components/portfolio/PortfolioNavigation'
+import '../../components/portfolio/PortfolioScrollbar.css'
 import './PortfolioLayout.css'
 
 export function PortfolioLayout() {
