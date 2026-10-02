@@ -1,5 +1,6 @@
 import { useId, useState } from 'react'
 import type { FormEvent } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 import { Card, CardBody, CardHeader } from '../../components/ui/Card'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Button } from '../../components/ui/Button'
@@ -14,6 +15,7 @@ import './HomeRoute.css'
 const assetPath = '/home-assets/'
 // TEMPORARY: Replace with the numeric code distributed in the CV before publishing.
 const temporaryAccessCode = '482731'
+const cardEntranceSpring = { type: 'spring' as const, stiffness: 220, damping: 24, mass: 0.85 }
 
 function SunIcon() {
   return (
@@ -52,10 +54,12 @@ const projects: HomeProject[] = [
 
 interface HomeProjectCardProps {
   project: HomeProject
+  index: number
+  reducedMotion: boolean
   onOpen: (project: HomeProject, trigger: HTMLButtonElement) => void
 }
 
-function HomeProjectCard({ project, onOpen }: HomeProjectCardProps) {
+function HomeProjectCard({ project, index, reducedMotion, onOpen }: HomeProjectCardProps) {
   const { title, media, alt, metadata, featured = false, tall = false } = project
   const linkClasses = [
     'home__card-link',
@@ -66,7 +70,13 @@ function HomeProjectCard({ project, onOpen }: HomeProjectCardProps) {
     .join(' ')
 
   return (
-    <div className={linkClasses}>
+    <motion.div
+      animate={{ scale: 1 }}
+      className={linkClasses}
+      initial={reducedMotion ? false : { scale: 0.87 }}
+      style={{ transformOrigin: 'center' }}
+      transition={reducedMotion ? { duration: 0 } : { ...cardEntranceSpring, delay: index * 0.11 }}
+    >
       <Card className="home__card">
         <CardHeader className="home__card-header">
           {featured ? (
@@ -85,11 +95,12 @@ function HomeProjectCard({ project, onOpen }: HomeProjectCardProps) {
         </CardBody>
       </Card>
       <button aria-label={`Abrir detalle de ${title}`} className="home__card-trigger" onClick={(event) => onOpen(project, event.currentTarget)} type="button" />
-    </div>
+    </motion.div>
   )
 }
 
 export function HomeRoute() {
+  const reducedMotion = useReducedMotion() ?? false
   const [selectedProject, setSelectedProject] = useState<HomeProject | null>(null)
   const [pendingProject, setPendingProject] = useState<HomeProject | null>(null)
   const [accessCode, setAccessCode] = useState('')
@@ -173,7 +184,7 @@ export function HomeRoute() {
 
       <main className="home__content">
         <section aria-label="Proyecto destacado" className="home__featured">
-          <HomeProjectCard onOpen={onProjectOpen} project={projects[0]} />
+          <HomeProjectCard index={0} onOpen={onProjectOpen} project={projects[0]} reducedMotion={reducedMotion} />
           <div className="home__dialogue-scene">
             <img
               alt="QB, personaje guía del portfolio"
@@ -196,7 +207,7 @@ export function HomeRoute() {
         <section aria-labelledby="selected-work-title" className="home__selected">
           <h2 id="selected-work-title">SELECTED WORK</h2>
           <div className="home__projects-grid">
-            {projects.slice(1).map((project) => <HomeProjectCard key={project.slug} onOpen={onProjectOpen} project={project} />)}
+            {projects.slice(1).map((project, index) => <HomeProjectCard index={index + 1} key={project.slug} onOpen={onProjectOpen} project={project} reducedMotion={reducedMotion} />)}
           </div>
         </section>
       </main>

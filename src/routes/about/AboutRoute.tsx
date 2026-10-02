@@ -1,4 +1,5 @@
 import { useId, useState } from 'react'
+import { motion, useReducedMotion } from 'motion/react'
 import { Button } from '../../components/ui/Button'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
@@ -14,6 +15,7 @@ const sections: { id: Section; number: string }[] = [
   { id: 'section-02', number: 'SECTION 02' },
   { id: 'section-03', number: 'SECTION 03' },
 ]
+const cardEntranceSpring = { type: 'spring' as const, stiffness: 220, damping: 24, mass: 0.85 }
 
 function SunIcon() {
   return (
@@ -25,6 +27,7 @@ function SunIcon() {
 }
 
 export function AboutRoute() {
+  const reducedMotion = useReducedMotion() ?? false
   const [selectedSection, setSelectedSection] = useState<Section | null>(null)
   const backgroundRef = usePortfolioBackgroundRef()
   const detailTransition = usePortfolioDetailTransition(selectedSection, () => setSelectedSection(null))
@@ -56,15 +59,15 @@ export function AboutRoute() {
         <main className="about__main">
           <h1>ABOUT</h1>
           <div className="about__sections">
-            {sections.map((section) => (
-              <button className="about__selector" key={section.id} onClick={(event) => {
+            {sections.map((section, index) => (
+              <motion.button animate={{ scale: 1 }} className="about__selector" initial={reducedMotion ? false : { scale: 0.87 }} key={section.id} onClick={(event) => {
                 detailTransition.registerTrigger(section.id, event.currentTarget)
                 detailTransition.prepareOpen(section.id)
                 setSelectedSection(section.id)
-              }} type="button">
+              }} style={{ transformOrigin: 'center' }} transition={reducedMotion ? { duration: 0 } : { ...cardEntranceSpring, delay: index * 0.11 }} type="button">
                 <span>{section.number}</span>
                 <span>Section label</span>
-              </button>
+              </motion.button>
             ))}
           </div>
         </main>
