@@ -8,6 +8,7 @@ import { CodeInput } from '../../components/ui/CodeInput'
 import { Dialog, DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../../components/ui/Dialog'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
+import { CollapseIcon, ExpandIcon } from '../../components/portfolio/PortfolioDetailIcons'
 import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
 import { usePortfolioBackgroundRef } from '../../app/layouts/usePortfolioBackgroundRef'
 import './HomeRoute.css'
@@ -16,6 +17,7 @@ const assetPath = '/home-assets/'
 // TEMPORARY: Replace with the numeric code distributed in the CV before publishing.
 const temporaryAccessCode = '482731'
 const cardEntranceSpring = { type: 'spring' as const, stiffness: 220, damping: 24, mass: 0.85 }
+const cardInteractionSpring = { type: 'spring' as const, stiffness: 360, damping: 30, mass: 0.75 }
 
 function SunIcon() {
   return (
@@ -60,7 +62,11 @@ interface HomeProjectCardProps {
 }
 
 function HomeProjectCard({ project, index, reducedMotion, onOpen }: HomeProjectCardProps) {
+  const [hovered, setHovered] = useState(false)
+  const [focused, setFocused] = useState(false)
+  const [pressed, setPressed] = useState(false)
   const { title, media, alt, metadata, featured = false, tall = false } = project
+  const interactionScale = pressed ? 0.985 : hovered || focused ? 1.02 : 1
   const linkClasses = [
     'home__card-link',
     featured && 'home__card-link--featured',
@@ -77,24 +83,44 @@ function HomeProjectCard({ project, index, reducedMotion, onOpen }: HomeProjectC
       style={{ transformOrigin: 'center' }}
       transition={reducedMotion ? { duration: 0 } : { ...cardEntranceSpring, delay: index * 0.11 }}
     >
-      <Card className="home__card">
-        <CardHeader className="home__card-header">
-          {featured ? (
-            <h2 className="home__card-title">{title}</h2>
-          ) : (
-            <h3 className="home__card-title">{title}</h3>
-          )}
-          <p className="home__card-meta">{metadata}</p>
-        </CardHeader>
-        <CardBody className="home__card-body">
-          <img
-            alt={alt}
-            className="home__card-media"
-            src={`${assetPath}${media}`}
-          />
-        </CardBody>
-      </Card>
-      <button aria-label={`Abrir detalle de ${title}`} className="home__card-trigger" onClick={(event) => onOpen(project, event.currentTarget)} type="button" />
+      <motion.div
+        animate={{ scale: reducedMotion ? 1 : interactionScale }}
+        className="home__card-interaction"
+        onHoverEnd={() => setHovered(false)}
+        onHoverStart={() => setHovered(true)}
+        transition={reducedMotion ? { duration: 0 } : cardInteractionSpring}
+      >
+        <Card className="home__card">
+          <CardHeader className="home__card-header">
+            {featured ? (
+              <h2 className="home__card-title">{title}</h2>
+            ) : (
+              <h3 className="home__card-title">{title}</h3>
+            )}
+            <p className="home__card-meta">{metadata}</p>
+          </CardHeader>
+          <CardBody className="home__card-body">
+            <img
+              alt={alt}
+              className="home__card-media"
+              src={`${assetPath}${media}`}
+            />
+          </CardBody>
+        </Card>
+        <button
+          aria-label={`Abrir detalle de ${title}`}
+          className="home__card-trigger"
+          onBlur={() => setFocused(false)}
+          onClick={(event) => onOpen(project, event.currentTarget)}
+          onFocus={(event) => setFocused(event.currentTarget.matches(':focus-visible'))}
+          onPointerCancel={() => setPressed(false)}
+          onPointerDown={() => setPressed(true)}
+          onPointerLeave={() => setPressed(false)}
+          onPointerUp={() => setPressed(false)}
+          type="button"
+        />
+        <span aria-hidden="true" className="home__card-affordance"><ExpandIcon /></span>
+      </motion.div>
     </motion.div>
   )
 }
@@ -257,8 +283,8 @@ export function HomeRoute() {
           ) : null}
         </PortfolioDetailSheetBody>
         <PortfolioDetailSheetFooter>
-          <CircleButton aria-label="Volver a proyectos" onClick={detailTransition.close} size={36} variant="outline">
-            <svg aria-hidden="true" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></svg>
+          <CircleButton aria-label="Cerrar detalle" onClick={detailTransition.close} size={36} variant="outline">
+            <CollapseIcon />
           </CircleButton>
         </PortfolioDetailSheetFooter>
       </PortfolioDetailSheet>

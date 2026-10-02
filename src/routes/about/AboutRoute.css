@@ -175,6 +175,8 @@
 
 .about__main {
   min-block-size: 0;
+  margin: calc(-1 * var(--space-xs));
+  padding: var(--space-xs);
   overflow-x: hidden;
   overflow-y: auto;
 }
@@ -193,10 +195,23 @@
   gap: var(--space-sm);
 }
 
+.about__selector-wrap {
+  position: relative;
+  min-inline-size: 0;
+}
+
+.about__selector-wrap:hover,
+.about__selector-wrap:has(.about__selector:focus-visible) {
+  z-index: 2;
+}
+
 .about__selector {
+  position: relative;
   display: flex;
   min-inline-size: 0;
+  inline-size: 100%;
   min-block-size: 144px;
+  block-size: 100%;
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
@@ -210,20 +225,64 @@
   text-align: start;
 }
 
-.about__selector span:first-child {
+.about__selector-number {
   font-family: var(--font-family-display);
   font-size: 20px;
 }
 
-.about__selector span:last-child {
+.about__selector-label {
   color: var(--color-text-secondary);
   font-family: var(--font-family-body);
   font-size: 13px;
 }
 
-.about__selector:last-child {
+.about__selector-wrap:last-child {
   grid-column: 1 / -1;
+}
+
+.about__selector-wrap:last-child .about__selector {
   min-block-size: 108px;
+}
+
+.about__selector-affordance {
+  position: absolute;
+  z-index: 1;
+  inset-block-end: var(--space-sm);
+  inset-inline-end: var(--space-sm);
+  display: grid;
+  inline-size: 36px;
+  block-size: 36px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--color-brand-primary);
+  color: var(--color-brand-primary-foreground);
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.9);
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+}
+
+.about__selector-affordance svg {
+  inline-size: 20px;
+  block-size: 20px;
+}
+
+.about__selector:active .about__selector-affordance {
+  opacity: 1;
+  transform: scale(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .about__selector:hover .about__selector-affordance {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about__selector-affordance {
+    transition: none;
+  }
 }
 
 .about__selector:focus-visible {
@@ -248,7 +307,7 @@ body:has(.about) {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .about__selector:last-child {
+  .about__selector-wrap:last-child {
     grid-column: auto;
   }
 }
