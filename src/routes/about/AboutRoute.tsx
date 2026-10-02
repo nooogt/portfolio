@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
+import { PortfolioIdentity } from '../../components/portfolio/PortfolioIdentity'
 import { CollapseIcon, ExpandIcon } from '../../components/portfolio/PortfolioDetailIcons'
 import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
 import { usePortfolioBackgroundRef } from '../../app/layouts/usePortfolioBackgroundRef'
@@ -92,16 +93,7 @@ export function AboutRoute() {
       <div className="about__page">
         <Header className="about__header">
           <HeaderContent className="about__header-content">
-            <div className="about__identity">
-              <img alt="Retrato de Graciela" className="about__avatar" src="/home-assets/graciela-avatar.png" />
-              <div className="about__identity-copy">
-                <span className="about__identity-name">Graciela</span>
-                <div className="about__skill-row">
-                  <span>Diseño sistemas</span>
-                  <span aria-hidden="true" className="about__skill-dots"><i /><i /><i /></span>
-                </div>
-              </div>
-            </div>
+            <PortfolioIdentity nameAs="span" />
           </HeaderContent>
           <HeaderEnd className="about__header-end">
             <CircleButton aria-disabled="true" aria-label="Cambiar tema (próximamente)" tabIndex={-1} variant="outline"><SunIcon /></CircleButton>

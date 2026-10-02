@@ -8,6 +8,7 @@ import { CodeInput } from '../../components/ui/CodeInput'
 import { Dialog, DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../../components/ui/Dialog'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
+import { PortfolioIdentity } from '../../components/portfolio/PortfolioIdentity'
 import { CollapseIcon, ExpandIcon } from '../../components/portfolio/PortfolioDetailIcons'
 import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
 import { usePortfolioBackgroundRef } from '../../app/layouts/usePortfolioBackgroundRef'
@@ -177,24 +178,7 @@ export function HomeRoute() {
       <div className="home__page">
       <Header className="home__header">
         <HeaderContent className="home__header-content">
-          <div className="home__identity">
-            <img
-              alt="Retrato de Graciela"
-              className="home__avatar"
-              src={`${assetPath}graciela-avatar.png`}
-            />
-            <div className="home__identity-copy">
-              <h1>Graciela</h1>
-              <div className="home__skill-row">
-                <span>Diseño sistemas</span>
-                <span aria-hidden="true" className="home__skill-dots">
-                  <i />
-                  <i />
-                  <i />
-                </span>
-              </div>
-            </div>
-          </div>
+          <PortfolioIdentity nameAs="h1" />
         </HeaderContent>
         <HeaderEnd className="home__header-end">
           <CircleButton

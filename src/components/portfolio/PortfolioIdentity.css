@@ -1,0 +1,107 @@
+.portfolio-identity {
+  display: flex;
+  min-inline-size: 0;
+  block-size: 56px;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm);
+  border: 0.5px solid var(--color-brand-secondary);
+  border-radius: var(--radius-pill);
+  background: var(--color-brand-primary-strong);
+}
+
+.portfolio-identity__avatar {
+  inline-size: 40px;
+  block-size: 40px;
+  flex: 0 0 40px;
+  border: 0.5px solid var(--color-brand-secondary);
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.portfolio-identity__copy {
+  display: flex;
+  min-inline-size: 0;
+  inline-size: 100%;
+  flex-direction: column;
+  gap: var(--space-xs);
+  color: var(--color-brand-primary-foreground);
+}
+
+.portfolio-identity__name {
+  margin: 0;
+  font-family: var(--font-family-display);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.portfolio-identity__skill-row {
+  display: flex;
+  min-inline-size: 0;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-family-body);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.portfolio-identity__descriptor-viewport {
+  position: relative;
+  display: block;
+  min-inline-size: 0;
+  block-size: 1.2em;
+  flex: 1 1 auto;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: start;
+}
+
+.portfolio-identity__descriptor-viewport:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.portfolio-identity__descriptor {
+  position: absolute;
+  inset: 0;
+  display: block;
+  overflow: hidden;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.portfolio-identity__accessible-descriptor {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.portfolio-identity__dots {
+  display: inline-flex;
+  flex: 0 0 auto;
+  gap: var(--space-xs);
+}
+
+.portfolio-identity__dots i {
+  inline-size: 4px;
+  block-size: 4px;
+  border-radius: 50%;
+  background: var(--color-brand-primary-foreground);
+  opacity: 0.38;
+}
+
+.portfolio-identity__dots .portfolio-identity__dot--active {
+  opacity: 1;
+}
