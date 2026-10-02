@@ -1,13 +1,10 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useState } from 'react'
 import { Button } from '../../components/ui/Button'
 import { CircleButton } from '../../components/ui/CircleButton'
-import { Footer, FooterContent } from '../../components/ui/Footer'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
-import { NavigationBar } from '../../components/ui/NavigationBar'
-import { NavigationItem } from '../../components/ui/NavigationItem'
-import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
 import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
+import { usePortfolioBackgroundRef } from '../../app/layouts/usePortfolioBackgroundRef'
 import './AboutRoute.css'
 
 type Section = 'section-01' | 'section-02' | 'section-03'
@@ -29,7 +26,7 @@ function SunIcon() {
 
 export function AboutRoute() {
   const [selectedSection, setSelectedSection] = useState<Section | null>(null)
-  const pageRef = useRef<HTMLDivElement | null>(null)
+  const backgroundRef = usePortfolioBackgroundRef()
   const detailTransition = usePortfolioDetailTransition(selectedSection, () => setSelectedSection(null))
   const titleId = useId()
   const selected = sections.find((section) => section.id === selectedSection)
@@ -37,7 +34,7 @@ export function AboutRoute() {
   return (
     <div className="about">
       <div aria-hidden="true" className="about__world" />
-      <div className="about__page" ref={pageRef}>
+      <div className="about__page">
         <Header className="about__header">
           <HeaderContent className="about__header-content">
             <div className="about__identity">
@@ -72,17 +69,8 @@ export function AboutRoute() {
           </div>
         </main>
 
-        <Footer className="about__footer">
-          <FooterContent className="about__footer-content">
-            <NavigationBar aria-label="Navegación principal">
-              <NavigationItem as="a" href="/">HOME</NavigationItem>
-              <NavigationItem active as="a" href="/about">ABOUT</NavigationItem>
-            </NavigationBar>
-            <PortfolioContactLauncher />
-          </FooterContent>
-        </Footer>
       </div>
-      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={detailTransition.close} open={selectedSection !== null} returnFocusRef={detailTransition.returnFocusRef} surfaceRef={detailTransition.surfaceRef}>
+      <PortfolioDetailSheet backgroundRef={backgroundRef} labelledBy={titleId} onClose={detailTransition.close} open={selectedSection !== null} returnFocusRef={detailTransition.returnFocusRef} surfaceRef={detailTransition.surfaceRef}>
         <PortfolioDetailSheetHeader className="about-sheet__header">
           <h2 id={titleId}>{selected?.number ?? ''}</h2>
           <p>Section label</p>

@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
 import { createPortal } from 'react-dom'
+import { useLocation } from 'react-router-dom'
 import { CircleButton } from '../ui/CircleButton'
 import { Toast } from '../ui/Toast'
 import './PortfolioContactLauncher.css'
@@ -20,11 +21,20 @@ function PhoneIcon() {
 }
 
 export function PortfolioContactLauncher() {
+  const { pathname } = useLocation()
   const [open, setOpen] = useState(false)
   const [toastMessage, setToastMessage] = useState<string | null>(null)
   const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const launcherRef = useRef<HTMLDivElement>(null)
   const gmailRef = useRef<HTMLButtonElement>(null)
+  const previousPathRef = useRef(pathname)
+
+  useEffect(() => {
+    if (previousPathRef.current !== pathname) {
+      previousPathRef.current = pathname
+      setOpen(false)
+    }
+  }, [pathname])
 
   useEffect(() => () => {
     if (timerRef.current) clearTimeout(timerRef.current)
@@ -33,7 +43,7 @@ export function PortfolioContactLauncher() {
   useEffect(() => {
     if (!open) return
 
-    const page = launcherRef.current?.closest('.home__page, .about__page')
+    const page = launcherRef.current?.closest('.portfolio-layout')
     const trigger = launcherRef.current?.querySelector<HTMLButtonElement>('.circle-button')
     const background = [
       page?.querySelector('header'),

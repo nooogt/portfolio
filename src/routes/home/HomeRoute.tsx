@@ -1,17 +1,14 @@
-import { useId, useRef, useState } from 'react'
+import { useId, useState } from 'react'
 import type { FormEvent } from 'react'
 import { Card, CardBody, CardHeader } from '../../components/ui/Card'
 import { CircleButton } from '../../components/ui/CircleButton'
 import { Button } from '../../components/ui/Button'
 import { CodeInput } from '../../components/ui/CodeInput'
 import { Dialog, DialogBody, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '../../components/ui/Dialog'
-import { Footer, FooterContent } from '../../components/ui/Footer'
 import { Header, HeaderContent, HeaderEnd } from '../../components/ui/Header'
-import { NavigationBar } from '../../components/ui/NavigationBar'
-import { NavigationItem } from '../../components/ui/NavigationItem'
-import { PortfolioContactLauncher } from '../../components/portfolio/PortfolioContactLauncher'
 import { PortfolioDetailSheet, PortfolioDetailSheetBody, PortfolioDetailSheetFooter, PortfolioDetailSheetHeader } from '../../components/portfolio/PortfolioDetailSheet'
 import { usePortfolioDetailTransition } from '../../components/portfolio/usePortfolioDetailTransition'
+import { usePortfolioBackgroundRef } from '../../app/layouts/usePortfolioBackgroundRef'
 import './HomeRoute.css'
 
 const assetPath = '/home-assets/'
@@ -97,7 +94,7 @@ export function HomeRoute() {
   const [pendingProject, setPendingProject] = useState<HomeProject | null>(null)
   const [accessCode, setAccessCode] = useState('')
   const [accessError, setAccessError] = useState(false)
-  const pageRef = useRef<HTMLDivElement | null>(null)
+  const backgroundRef = usePortfolioBackgroundRef()
   const detailTransition = usePortfolioDetailTransition(selectedProject?.slug ?? null, () => setSelectedProject(null))
   const titleId = useId()
 
@@ -140,7 +137,7 @@ export function HomeRoute() {
   return (
     <div className="home">
       <div aria-hidden="true" className="home__world" />
-      <div className="home__page" ref={pageRef}>
+      <div className="home__page">
       <Header className="home__header">
         <HeaderContent className="home__header-content">
           <div className="home__identity">
@@ -204,19 +201,6 @@ export function HomeRoute() {
         </section>
       </main>
 
-      <Footer className="home__footer">
-        <FooterContent className="home__footer-content">
-          <NavigationBar aria-label="Navegación principal">
-            <NavigationItem active as="a" href="/">
-              HOME
-            </NavigationItem>
-            <NavigationItem as="a" href="/about">
-              ABOUT
-            </NavigationItem>
-          </NavigationBar>
-          <PortfolioContactLauncher />
-        </FooterContent>
-      </Footer>
       </div>
       <Dialog onOpenChange={(open) => { if (!open) closeAccessDialog() }} open={pendingProject !== null}>
         <form className="home__access-form" onSubmit={submitAccessCode}>
@@ -246,7 +230,7 @@ export function HomeRoute() {
           </DialogFooter>
         </form>
       </Dialog>
-      <PortfolioDetailSheet backgroundRef={pageRef} labelledBy={titleId} onClose={detailTransition.close} open={selectedProject !== null} returnFocusRef={detailTransition.returnFocusRef} surfaceRef={detailTransition.surfaceRef}>
+      <PortfolioDetailSheet backgroundRef={backgroundRef} labelledBy={titleId} onClose={detailTransition.close} open={selectedProject !== null} returnFocusRef={detailTransition.returnFocusRef} surfaceRef={detailTransition.surfaceRef}>
         <PortfolioDetailSheetHeader className="home__detail-header">
           <h2 id={titleId}>{selectedProject?.title}</h2>
           <p>{selectedProject?.metadata}</p>
