@@ -1,0 +1,1201 @@
+{
+  "version": "2.17",
+  "children": [
+    {
+      "type": "frame",
+      "id": "sM4zU",
+      "x": 0,
+      "y": 0,
+      "name": "[portfolio]-FOUNDATIONS",
+      "clip": true,
+      "width": 520,
+      "height": 900,
+      "fill": "$portfolio.color.background",
+      "layout": "vertical",
+      "gap": 28,
+      "padding": 40,
+      "children": [
+        {
+          "type": "text",
+          "id": "dzxWc",
+          "name": "Foundations Eyebrow",
+          "fill": "$portfolio.color.accent",
+          "content": "ACCEPTED FOUNDATIONS",
+          "fontFamily": "VT323",
+          "fontSize": 24,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "pbzfj",
+          "name": "Foundations Title",
+          "fill": "$portfolio.color.ink",
+          "content": "Portfolio foundations",
+          "lineHeight": 1,
+          "fontFamily": "VT323",
+          "fontSize": 48,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "text",
+          "id": "p2EPe",
+          "name": "Foundations Status",
+          "fill": "$portfolio.color.ink",
+          "textGrowth": "fixed-width",
+          "width": "fill_container",
+          "content": "Accepted foundations ≠ visual exploration ≠ final components",
+          "lineHeight": 1.4,
+          "fontFamily": "Source Sans 3",
+          "fontSize": 15,
+          "fontWeight": "normal"
+        },
+        {
+          "type": "frame",
+          "id": "eKEyJ",
+          "name": "Color Foundations",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 12,
+          "children": [
+            {
+              "type": "text",
+              "id": "P6x8CW",
+              "name": "Color Section Label",
+              "fill": "$portfolio.color.ink",
+              "content": "COLOR",
+              "fontFamily": "VT323",
+              "fontSize": 26,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "frame",
+              "id": "R1Ich",
+              "name": "Background / base Swatch",
+              "width": "fill_container",
+              "fill": "#FFFFFF55",
+              "cornerRadius": 8,
+              "stroke": "$portfolio.color.ink",
+              "strokeWidth": 1,
+              "gap": 16,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "ICLLf",
+                  "name": "Background / base Color",
+                  "fill": "$portfolio.color.background",
+                  "width": 64,
+                  "height": 52,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "vXo6Z",
+                  "name": "Background / base Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ywK9X",
+                      "name": "Background / base Name",
+                      "fill": "$portfolio.color.ink",
+                      "content": "Background / base",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "dny6v",
+                      "name": "Background / base Hex",
+                      "fill": "$portfolio.color.ink",
+                      "content": "#F9E6C8",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "uT3jh",
+              "name": "Primary / ink Swatch",
+              "width": "fill_container",
+              "fill": "#FFFFFF55",
+              "cornerRadius": 8,
+              "stroke": "$portfolio.color.ink",
+              "strokeWidth": 1,
+              "gap": 16,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "yhFc9",
+                  "name": "Primary / ink Color",
+                  "fill": "$portfolio.color.ink",
+                  "width": 64,
+                  "height": 52,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "T9gWZ",
+                  "name": "Primary / ink Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "tJbqr",
+                      "name": "Primary / ink Name",
+                      "fill": "$portfolio.color.ink",
+                      "content": "Primary / ink",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "DuY4j",
+                      "name": "Primary / ink Hex",
+                      "fill": "$portfolio.color.ink",
+                      "content": "#2F4048",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "v6fPo1",
+              "name": "Accent Swatch",
+              "width": "fill_container",
+              "fill": "#FFFFFF55",
+              "cornerRadius": 8,
+              "stroke": "$portfolio.color.ink",
+              "strokeWidth": 1,
+              "gap": 16,
+              "padding": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "cornerRadius": 4,
+                  "id": "JPl0m",
+                  "name": "Accent Color",
+                  "fill": "$portfolio.color.accent",
+                  "width": 64,
+                  "height": 52,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 1
+                },
+                {
+                  "type": "frame",
+                  "id": "HmIKT",
+                  "name": "Accent Info",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 2,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Rto2C",
+                      "name": "Accent Name",
+                      "fill": "$portfolio.color.ink",
+                      "content": "Accent",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "KRzVC",
+                      "name": "Accent Hex",
+                      "fill": "$portfolio.color.ink",
+                      "content": "#C76749",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ot4mF",
+          "name": "Typography Foundations",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 10,
+          "children": [
+            {
+              "type": "text",
+              "id": "kjGmG",
+              "name": "Typography Section Label",
+              "fill": "$portfolio.color.ink",
+              "content": "TYPOGRAPHY",
+              "fontFamily": "VT323",
+              "fontSize": 26,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "j6Zz1",
+              "name": "Display Sample",
+              "fill": "$portfolio.color.ink",
+              "content": "VT323 — expressive / display",
+              "fontFamily": "VT323",
+              "fontSize": 34,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "z4IjeD",
+              "name": "Body Sample",
+              "fill": "$portfolio.color.ink",
+              "content": "Source Sans 3 — clarity / information / UI",
+              "fontFamily": "Source Sans 3",
+              "fontSize": 17,
+              "fontWeight": "normal"
+            },
+            {
+              "type": "text",
+              "id": "bTH0i",
+              "name": "Typography Note",
+              "fill": "$portfolio.color.ink",
+              "textGrowth": "fixed-width",
+              "width": "fill_container",
+              "content": "Working sizes only. No official type scale has been defined.",
+              "lineHeight": 1.35,
+              "fontFamily": "Source Sans 3",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "gqPMo",
+      "x": 640,
+      "y": 0,
+      "name": "[portfolio]-HOME-EXPLORATION-01",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$portfolio.color.background",
+      "layout": "vertical",
+      "gap": 18,
+      "padding": [
+        24,
+        36,
+        28,
+        36
+      ],
+      "children": [
+        {
+          "type": "frame",
+          "id": "m38LP",
+          "name": "Desktop Navigation",
+          "width": "fill_container",
+          "height": 56,
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "oGKmv",
+              "name": "Brand Mark",
+              "gap": 10,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "rectangle",
+                  "id": "Z9MxNw",
+                  "name": "Brand Pixel",
+                  "fill": "$portfolio.color.accent",
+                  "width": 14,
+                  "height": 14,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 2
+                },
+                {
+                  "type": "text",
+                  "id": "cFeYA",
+                  "name": "Brand Label",
+                  "fill": "$portfolio.color.ink",
+                  "content": "BELÉN.EXE",
+                  "fontFamily": "VT323",
+                  "fontSize": 28,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "XngXD",
+              "name": "Navigation Actions",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "n37Km",
+                  "name": "Provisional Tabs",
+                  "fill": "#FFFFFF55",
+                  "cornerRadius": 10,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 1,
+                  "gap": 4,
+                  "padding": 4,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "zfUSy",
+                      "name": "HOME Tab",
+                      "fill": "$portfolio.color.ink",
+                      "cornerRadius": 7,
+                      "padding": [
+                        8,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "uC7Hd",
+                          "name": "HOME Tab Label",
+                          "fill": "$portfolio.color.background",
+                          "content": "HOME",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "TcYpX",
+                      "name": "WORK Tab",
+                      "fill": "#FFFFFF00",
+                      "cornerRadius": 7,
+                      "padding": [
+                        8,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "F8W1aj",
+                          "name": "WORK Tab Label",
+                          "fill": "$portfolio.color.ink",
+                          "content": "WORK",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "SqWJY",
+                      "name": "ABOUT Tab",
+                      "fill": "#FFFFFF00",
+                      "cornerRadius": 7,
+                      "padding": [
+                        8,
+                        16
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "vuVUm",
+                          "name": "ABOUT Tab Label",
+                          "fill": "$portfolio.color.ink",
+                          "content": "ABOUT",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 13,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "zvxhJ",
+                  "name": "Theme Switch Placeholder",
+                  "fill": "$portfolio.color.accent",
+                  "cornerRadius": 10,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 2,
+                  "gap": 8,
+                  "padding": [
+                    10,
+                    14
+                  ],
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon",
+                      "id": "HsnIL",
+                      "name": "Theme Sun Icon",
+                      "width": 18,
+                      "height": 18,
+                      "icon": "sun",
+                      "library": "lucide",
+                      "fill": "$portfolio.color.background"
+                    },
+                    {
+                      "type": "text",
+                      "id": "d1FKZ",
+                      "name": "Theme Switch Label",
+                      "fill": "$portfolio.color.background",
+                      "content": "THEME",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 13,
+                      "fontWeight": "700"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "D5ZTk",
+          "name": "Home Stage",
+          "width": "fill_container",
+          "height": "fill_container",
+          "gap": 22,
+          "children": [
+            {
+              "type": "frame",
+              "id": "TppAM",
+              "name": "Presentation Scene",
+              "width": 430,
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "XHuR3",
+                  "name": "Professional Introduction",
+                  "width": "fill_container",
+                  "layout": "vertical",
+                  "gap": 6,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "JhWKO",
+                      "name": "Name",
+                      "fill": "$portfolio.color.ink",
+                      "content": "BELÉN",
+                      "lineHeight": 0.9,
+                      "fontFamily": "VT323",
+                      "fontSize": 76,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "lh3iy",
+                      "name": "Role",
+                      "fill": "$portfolio.color.ink",
+                      "content": "Product Designer",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 25,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "o0Flr",
+                      "name": "Disciplines",
+                      "fill": "$portfolio.color.accent",
+                      "content": "UI · Systems · Prototyping",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "EeDcM",
+                  "name": "Character Stage Placeholder",
+                  "clip": true,
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#C7674922",
+                  "cornerRadius": 18,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 2,
+                  "layout": "none",
+                  "children": [
+                    {
+                      "type": "ellipse",
+                      "id": "n9Xah",
+                      "x": 292,
+                      "y": 30,
+                      "name": "Stage Sun",
+                      "fill": "#C7674966",
+                      "width": 72,
+                      "height": 72,
+                      "stroke": "$portfolio.color.ink",
+                      "strokeWidth": 2
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "rdxse",
+                      "x": 0,
+                      "y": 228,
+                      "name": "Stage Horizon",
+                      "fill": "#2F40481A",
+                      "width": 430,
+                      "height": 124
+                    },
+                    {
+                      "type": "rectangle",
+                      "id": "Hcqa4",
+                      "x": 0,
+                      "y": 227,
+                      "name": "Stage Ground Line",
+                      "fill": "$portfolio.color.ink",
+                      "width": 430,
+                      "height": 3
+                    },
+                    {
+                      "type": "frame",
+                      "id": "fTnJp",
+                      "x": 139,
+                      "y": 70,
+                      "name": "Character Placeholder",
+                      "width": 152,
+                      "height": 246,
+                      "layout": "vertical",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "ellipse",
+                          "id": "ttOit",
+                          "name": "Character Head",
+                          "fill": "$portfolio.color.background",
+                          "width": 82,
+                          "height": 82,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 4
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": [
+                            28,
+                            28,
+                            10,
+                            10
+                          ],
+                          "id": "y2xtU",
+                          "name": "Character Body",
+                          "fill": "$portfolio.color.accent",
+                          "width": 112,
+                          "height": 120,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 4
+                        },
+                        {
+                          "type": "text",
+                          "id": "jeobQ",
+                          "name": "Character Status",
+                          "fill": "$portfolio.color.ink",
+                          "content": "CHARACTER PLACEHOLDER",
+                          "fontFamily": "VT323",
+                          "fontSize": 17,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Y7li1",
+              "name": "Selected Work Section",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 12,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "i8YTz",
+                  "name": "Selected Work Header",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "end",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "IBlxp",
+                      "name": "Selected Work Title",
+                      "fill": "$portfolio.color.ink",
+                      "content": "SELECTED WORK",
+                      "fontFamily": "VT323",
+                      "fontSize": 38,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "text",
+                      "id": "TNtUi",
+                      "name": "Selected Work Note",
+                      "fill": "$portfolio.color.accent",
+                      "content": "03 PROJECT FILES",
+                      "fontFamily": "Source Sans 3",
+                      "fontSize": 12,
+                      "fontWeight": "700"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "W3V9T",
+                  "name": "RAMPET Project Card",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#FFFFFF66",
+                  "cornerRadius": 14,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 2,
+                  "gap": 18,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "fgAjn",
+                      "name": "RAMPET Media Preview",
+                      "clip": true,
+                      "width": 210,
+                      "height": "fill_container",
+                      "fill": "#2F404812",
+                      "cornerRadius": 8,
+                      "stroke": "$portfolio.color.ink",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 8,
+                          "id": "irV2L",
+                          "x": 16,
+                          "y": 16,
+                          "name": "RAMPET Preview Accent",
+                          "fill": "#C7674977",
+                          "width": 64,
+                          "height": 64,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 2
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 6,
+                          "id": "hdJJb",
+                          "x": 50,
+                          "y": 42,
+                          "name": "RAMPET Preview Window",
+                          "fill": "$portfolio.color.background",
+                          "width": 126,
+                          "height": 72,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "ep6kA",
+                          "x": 16,
+                          "y": 122,
+                          "name": "RAMPET Preview Label",
+                          "fill": "$portfolio.color.ink",
+                          "content": "FUTURE VIDEO / LOOP",
+                          "fontFamily": "VT323",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "eJ9qn",
+                      "name": "RAMPET Card Content",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "gap": 7,
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "b6G1bM",
+                          "name": "RAMPET Index",
+                          "fill": "$portfolio.color.accent",
+                          "content": "01",
+                          "fontFamily": "VT323",
+                          "fontSize": 18,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "f2DVF",
+                          "name": "RAMPET Name",
+                          "fill": "$portfolio.color.ink",
+                          "content": "RAMPET",
+                          "lineHeight": 1,
+                          "fontFamily": "VT323",
+                          "fontSize": 34,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "pY1S4",
+                          "name": "RAMPET Metadata",
+                          "fill": "$portfolio.color.ink",
+                          "content": "Product Design · Mobile · Systems",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "e08fM",
+                          "name": "RAMPET Case Action",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "r5Rsmn",
+                              "name": "RAMPET Action Label",
+                              "fill": "$portfolio.color.accent",
+                              "content": "VIEW CASE",
+                              "fontFamily": "Source Sans 3",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "C2MxH",
+                              "name": "RAMPET Action Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "arrow-right",
+                              "library": "lucide",
+                              "fill": "$portfolio.color.accent"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "z59KX",
+                  "name": "CONEXCOM Project Card",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#FFFFFF66",
+                  "cornerRadius": 14,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 2,
+                  "gap": 18,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "dkIAy",
+                      "name": "CONEXCOM Media Preview",
+                      "clip": true,
+                      "width": 210,
+                      "height": "fill_container",
+                      "fill": "#2F404812",
+                      "cornerRadius": 8,
+                      "stroke": "$portfolio.color.ink",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 8,
+                          "id": "uE4CZ",
+                          "x": 16,
+                          "y": 16,
+                          "name": "CONEXCOM Preview Accent",
+                          "fill": "#C7674977",
+                          "width": 64,
+                          "height": 64,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 2
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 6,
+                          "id": "r6eNrc",
+                          "x": 50,
+                          "y": 42,
+                          "name": "CONEXCOM Preview Window",
+                          "fill": "$portfolio.color.background",
+                          "width": 126,
+                          "height": 72,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "wtqdV",
+                          "x": 16,
+                          "y": 122,
+                          "name": "CONEXCOM Preview Label",
+                          "fill": "$portfolio.color.ink",
+                          "content": "FUTURE VIDEO / LOOP",
+                          "fontFamily": "VT323",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "GnPCB",
+                      "name": "CONEXCOM Card Content",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "gap": 7,
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "KcfYZ",
+                          "name": "CONEXCOM Index",
+                          "fill": "$portfolio.color.accent",
+                          "content": "02",
+                          "fontFamily": "VT323",
+                          "fontSize": 18,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "v7InFO",
+                          "name": "CONEXCOM Name",
+                          "fill": "$portfolio.color.ink",
+                          "content": "CONEXCOM",
+                          "lineHeight": 1,
+                          "fontFamily": "VT323",
+                          "fontSize": 34,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "R3INyg",
+                          "name": "CONEXCOM Metadata",
+                          "fill": "$portfolio.color.ink",
+                          "content": "UX/UI · Platform · Prototyping",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "E9nW2r",
+                          "name": "CONEXCOM Case Action",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "p4HXkq",
+                              "name": "CONEXCOM Action Label",
+                              "fill": "$portfolio.color.accent",
+                              "content": "VIEW CASE",
+                              "fontFamily": "Source Sans 3",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "jUiIj",
+                              "name": "CONEXCOM Action Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "arrow-right",
+                              "library": "lucide",
+                              "fill": "$portfolio.color.accent"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "lEPv5",
+                  "name": "PROTOTYPE FACTORY Project Card",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#FFFFFF66",
+                  "cornerRadius": 14,
+                  "stroke": "$portfolio.color.ink",
+                  "strokeWidth": 2,
+                  "gap": 18,
+                  "padding": 14,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "w6rtSI",
+                      "name": "PROTOTYPE FACTORY Media Preview",
+                      "clip": true,
+                      "width": 210,
+                      "height": "fill_container",
+                      "fill": "#2F404812",
+                      "cornerRadius": 8,
+                      "stroke": "$portfolio.color.ink",
+                      "strokeWidth": 1,
+                      "layout": "none",
+                      "children": [
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 8,
+                          "id": "S7DlO7",
+                          "x": 16,
+                          "y": 16,
+                          "name": "PROTOTYPE FACTORY Preview Accent",
+                          "fill": "#C7674977",
+                          "width": 64,
+                          "height": 64,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 2
+                        },
+                        {
+                          "type": "rectangle",
+                          "cornerRadius": 6,
+                          "id": "lm4Sx",
+                          "x": 50,
+                          "y": 42,
+                          "name": "PROTOTYPE FACTORY Preview Window",
+                          "fill": "$portfolio.color.background",
+                          "width": 126,
+                          "height": 72,
+                          "stroke": "$portfolio.color.ink",
+                          "strokeWidth": 2
+                        },
+                        {
+                          "type": "text",
+                          "id": "p7puR",
+                          "x": 16,
+                          "y": 122,
+                          "name": "PROTOTYPE FACTORY Preview Label",
+                          "fill": "$portfolio.color.ink",
+                          "content": "FUTURE VIDEO / LOOP",
+                          "fontFamily": "VT323",
+                          "fontSize": 16,
+                          "fontWeight": "normal"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "l40hdh",
+                      "name": "PROTOTYPE FACTORY Card Content",
+                      "width": "fill_container",
+                      "height": "fill_container",
+                      "layout": "vertical",
+                      "gap": 7,
+                      "justifyContent": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "z98uLu",
+                          "name": "PROTOTYPE FACTORY Index",
+                          "fill": "$portfolio.color.accent",
+                          "content": "03",
+                          "fontFamily": "VT323",
+                          "fontSize": 18,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "UBc3T",
+                          "name": "PROTOTYPE FACTORY Name",
+                          "fill": "$portfolio.color.ink",
+                          "content": "PROTOTYPE FACTORY",
+                          "lineHeight": 1,
+                          "fontFamily": "VT323",
+                          "fontSize": 34,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "xfmZH",
+                          "name": "PROTOTYPE FACTORY Metadata",
+                          "fill": "$portfolio.color.ink",
+                          "content": "AI Prototyping · Systems · Build",
+                          "fontFamily": "Source Sans 3",
+                          "fontSize": 14,
+                          "fontWeight": "600"
+                        },
+                        {
+                          "type": "frame",
+                          "id": "shlA0",
+                          "name": "PROTOTYPE FACTORY Case Action",
+                          "gap": 8,
+                          "alignItems": "center",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "vVNlg",
+                              "name": "PROTOTYPE FACTORY Action Label",
+                              "fill": "$portfolio.color.accent",
+                              "content": "VIEW CASE",
+                              "fontFamily": "Source Sans 3",
+                              "fontSize": 13,
+                              "fontWeight": "700"
+                            },
+                            {
+                              "type": "icon",
+                              "id": "Lmx7s",
+                              "name": "PROTOTYPE FACTORY Action Arrow",
+                              "width": 16,
+                              "height": 16,
+                              "icon": "arrow-right",
+                              "library": "lucide",
+                              "fill": "$portfolio.color.accent"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "bvN0q",
+          "name": "Visual Novel Information Panel",
+          "width": "fill_container",
+          "height": 118,
+          "fill": "$portfolio.color.ink",
+          "cornerRadius": 14,
+          "stroke": "$portfolio.color.accent",
+          "strokeWidth": 3,
+          "gap": 20,
+          "padding": [
+            16,
+            20
+          ],
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "EzE3K",
+              "name": "Speaker Label",
+              "fill": "$portfolio.color.accent",
+              "cornerRadius": 6,
+              "padding": [
+                8,
+                14
+              ],
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ORxjz",
+                  "name": "Speaker Name",
+                  "fill": "$portfolio.color.background",
+                  "content": "BELÉN",
+                  "fontFamily": "VT323",
+                  "fontSize": 24,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "k7PxXE",
+              "name": "Dialogue Copy",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 4,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "tPEzb",
+                  "name": "Dialogue Headline",
+                  "fill": "$portfolio.color.background",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "I design systems, prototype with AI, and help ideas become real interfaces.",
+                  "fontFamily": "VT323",
+                  "fontSize": 27,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "NHLIY",
+                  "name": "Dialogue Supporting Copy",
+                  "fill": "$portfolio.color.background",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "This panel is a static framing experiment — essential portfolio content remains visible without interaction.",
+                  "fontFamily": "Source Sans 3",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "portfolio.color.background": {
+      "type": "color",
+      "value": "#F9E6C8"
+    },
+    "portfolio.color.ink": {
+      "type": "color",
+      "value": "#2F4048"
+    },
+    "portfolio.color.accent": {
+      "type": "color",
+      "value": "#C76749"
+    }
+  },
+  "fileToken": "abed2890-5709-49f1-86f2-0f05878320ae"
+}
